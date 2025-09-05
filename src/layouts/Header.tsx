@@ -33,7 +33,12 @@ export default function Header() {
               className="text-xl font-bold text-white hover:text-[#1E96C9] transition-colors duration-200"
               style={{ fontFamily: "var(--font-optft)" }}
             >
-              <Image src="/logo_white.svg" alt="DesignNetrix" width={120} height={40} />
+              <Image
+                src="/logo_white.png"
+                alt="DesignNetrix"
+                width={250}
+                height={40}
+              />
             </Link>
           </div>
 
@@ -69,7 +74,6 @@ export default function Header() {
             </a>
           </div>
 
-       
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white/80 hover:text-white transition-colors duration-200">
             <svg
