@@ -1,15 +1,31 @@
 @import "tailwindcss";
-
+@font-face {
+  font-family: "OPTIFuturaDemiBold";
+  src: url("/fonts/OPTIFuturaDemiBold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "weezerfont";
+  src: url("/fonts/weezerfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-optft: "OPTIFuturaDemiBold", serif;
+  --font-sansbld: "weezerfont", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-sansbld);
 }
 
 @media (prefers-color-scheme: dark) {
