@@ -1,10 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LiquidEther from "@/components/LiquidEther";
+import LightRays from "@/components/Rays";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        window.innerWidth < 768 ||
+          /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          )
+      );
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -34,28 +52,45 @@ export default function Home() {
   };
 
   return (
-    <div className="relative h-full w-full min-h-screen">
+    <div className="relative h-full w-full min-h-screen ">
       {/* Background fluid animation */}
       <div className="absolute inset-0">
-        <LiquidEther
-          colors={["#1D4486", "#1E96C9", "#ffffff"]}
-          mouseForce={14}
-          cursorSize={70}
-          isViscous={false}
-          viscous={24}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
-        />
+        {!isMobile ? (
+          <LiquidEther
+            colors={["#1D4486", "#1E96C9", "#ffffff"]}
+            mouseForce={10}
+            cursorSize={50}
+            isViscous={false}
+            viscous={20}
+            iterationsViscous={16}
+            iterationsPoisson={16}
+            resolution={0.3}
+            isBounce={false}
+            autoDemo={true}
+            autoSpeed={0.3}
+            autoIntensity={1.5}
+            takeoverDuration={0.25}
+            autoResumeDelay={4000}
+            autoRampDuration={0.8}
+          />
+        ) : (
+          <div className="liquid-ether-fallback w-full h-full" />
+        )}
       </div>
-
+      <div className="absolute inset-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        ></LightRays>
+      </div>
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center">
         <p
@@ -99,7 +134,7 @@ export default function Home() {
           {/* Primary CTA: Enhanced for mobile */}
           <button
             onClick={openModal}
-            className="group relative px-6 py-3 mx-auto sm:py-2.5 text-sm font-medium text-white bg-[#1E96C9] rounded-md transition-all duration-200 ease-out hover:bg-[#1D4486] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E96C9] active:translate-y-px w-full sm:w-auto"
+            className="group relative px-6 py-3 mx-auto sm:py-2.5 text-sm font-medium text-white bg-[#1D4486] rounded-md transition-all duration-200 ease-out hover:bg-[#1D4486] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E96C9] active:translate-y-px w-full sm:w-auto"
           >
             <span className="relative z-10">
               Request a Strategic Consultation

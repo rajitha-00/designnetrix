@@ -40,3 +40,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mobile optimization for 3D components */
+@media (max-width: 768px) {
+  .liquid-ether-fallback {
+    background: linear-gradient(135deg, #1D4486 0%, #1E96C9 50%, #1D4486 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ensure proper rendering on mobile */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for mobile viewport */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
