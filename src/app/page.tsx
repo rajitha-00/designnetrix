@@ -39,14 +39,14 @@ export default function Home() {
       <div className="absolute inset-0">
         <LiquidEther
           colors={["#1D4486", "#1E96C9", "#ffffff"]}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous={true}
-          viscous={30}
+          mouseForce={14}
+          cursorSize={70}
+          isViscous={false}
+          viscous={24}
           iterationsViscous={32}
           iterationsPoisson={32}
           resolution={0.5}
-          isBounce={true}
+          isBounce={false}
           autoDemo={true}
           autoSpeed={0.5}
           autoIntensity={2.2}

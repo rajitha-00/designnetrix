@@ -38,6 +38,7 @@ export default function Header() {
                 alt="DesignNetrix"
                 width={250}
                 height={40}
+                className="w-32 h-auto sm:w-40 md:w-48 lg:w-60 xl:w-64"
               />
             </Link>
           </div>
