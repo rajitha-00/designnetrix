@@ -134,7 +134,7 @@ export default function Home() {
           {/* Primary CTA: Enhanced for mobile */}
           <button
             onClick={openModal}
-            className="group relative px-6 py-3 mx-auto sm:py-2.5 text-sm font-medium text-white bg-[#1D4486] rounded-md transition-all duration-200 ease-out hover:bg-[#1D4486] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E96C9] active:translate-y-px w-full sm:w-auto"
+            className="group relative px-6 py-3 mx-auto sm:py-2.5 text-sm font-medium text-white bg-[#1E96C9] rounded-md transition-all duration-200 ease-out hover:bg-[#1D4486] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E96C9] active:translate-y-px w-full sm:w-auto"
           >
             <span className="relative z-10">
               Request a Strategic Consultation
