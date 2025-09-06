@@ -44,7 +44,7 @@ body {
 /* Mobile optimization for 3D components */
 @media (max-width: 768px) {
   .liquid-ether-fallback {
-    background: linear-gradient(135deg, #0f1622 0%, #092a38 50%, #081122 100%);
+    background: linear-gradient(135deg, #06080c 0%, #010405 50%, #081122 100%);
     background-size: 400% 400%;
     animation: gradientShift 8s ease infinite;
   }
