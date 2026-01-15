@@ -3,6 +3,7 @@
 import { Button } from "@/components/Button";
 import ChainCarousel, { ChainItem } from "@/components/lightswind/chain-carosoule";
 import { Palette, Rocket, Award, Gauge, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const capabilitiesData: ChainItem[] = [
   {
@@ -45,10 +46,16 @@ const capabilitiesData: ChainItem[] = [
 
 export default function CapabilitiesSection() {
   return (
-    <section className="relative z-10 py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section className="relative z-10 py-20 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header - Centered */}
-        <div className="text-center mb-12 lg:mb-16">
+        <motion.div
+           initial={{ opacity: 0, y: 50 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8, ease: "easeOut" }}
+           className="text-center mb-12 lg:mb-16"
+        >
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-xs sm:text-sm font-medium tracking-widest text-[#1E96C9] uppercase mb-4"
@@ -61,7 +68,7 @@ export default function CapabilitiesSection() {
           >
             EVERYTHING YOU NEED{" "}
             <span className="block">
-              TO <span className="text-[#1E96C9]">COMPETE</span>
+              TO <span className="text-[#1E96C9] text-glow-blue">COMPETE</span>
             </span>
           </h2>
           <p
@@ -77,7 +84,7 @@ export default function CapabilitiesSection() {
             <Button
               variant="secondary"
               size="lg"
-              className="group"
+              className="group glass hover:bg-white/10 transition-colors duration-300"
               icon={
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -98,16 +105,22 @@ export default function CapabilitiesSection() {
               View solutions
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {/* ChainCarousel */}
-        <div className="mt-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="mt-12"
+        >
           <ChainCarousel
             items={capabilitiesData}
             scrollSpeedMs={2000}
             visibleItemCount={7}
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

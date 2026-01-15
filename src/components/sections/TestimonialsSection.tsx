@@ -2,6 +2,7 @@
 
 import type { ThreeDCarouselItem } from "@/components/lightswind/3d-carousel";
 import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from "../lightswind/3d-scroll-trigger";
+import { motion } from "framer-motion";
 
 const testimonialsData: ThreeDCarouselItem[] = [
   {
@@ -66,7 +67,13 @@ export default function TestimonialsSection() {
     <section className="relative z-10 py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto">
         {/* Section Header */}
-        <div className="mb-12 lg:mb-16 text-center">
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8, ease: "easeOut" as const }}
+           className="mb-12 lg:mb-16 text-center"
+        >
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-xs sm:text-sm font-medium tracking-widest text-[#1E96C9] uppercase mb-4"
@@ -79,7 +86,7 @@ export default function TestimonialsSection() {
           >
             TRUSTED BY LEADING{" "}
             <span className="block">
-              <span className="text-[#1E96C9]">INNOVATORS</span>
+              <span className="text-[#1E96C9] text-glow-blue">INNOVATORS</span>
             </span>
           </h2>
           <p
@@ -89,7 +96,7 @@ export default function TestimonialsSection() {
             Don&apos;t just take our word for it. See what our clients have to say
             about working with DesignNetrix and the results we&apos;ve delivered.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3D Carousel */}
         <div className="relative overflow-hidden py-12">
@@ -101,8 +108,8 @@ export default function TestimonialsSection() {
                   className="inline-block mx-6 w-[450px] flex-shrink-0"
                 >
                   <div className="relative group h-auto">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E96C9]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                    <div className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#1E96C9]/50 transition-all duration-300 flex flex-col">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1E96C9]/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="relative glass rounded-2xl p-6 hover:border-[#1E96C9]/50 transition-all duration-300 flex flex-col">
                       {/* Avatar and Info */}
                       <div className="flex items-start gap-4 mb-4">
                         <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#1E96C9]/30 flex-shrink-0">
@@ -159,8 +166,8 @@ export default function TestimonialsSection() {
                   className="inline-block mx-6 w-[450px] flex-shrink-0"
                 >
                   <div className="relative group h-auto">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                    <div className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 flex flex-col">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="relative glass rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 flex flex-col">
                       {/* Avatar and Info */}
                       <div className="flex items-start gap-4 mb-4">
                         <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-purple-500/30 flex-shrink-0">

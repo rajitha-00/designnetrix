@@ -20,13 +20,7 @@
   --font-sansbld: "weezerfont", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-sansbld);
-}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -134,9 +128,33 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Text Utilities */
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.text-glow-blue {
+  text-shadow: 0 0 10px rgba(30, 150, 201, 0.8), 0 0 20px rgba(30, 150, 201, 0.4);
+}
+
 /* Fix for mobile viewport */
 html, body {
   overflow-x: hidden;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }

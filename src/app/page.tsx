@@ -10,7 +10,6 @@ import ResultsSection from "@/components/sections/ResultsSection";
 import AdvantagesSection from "@/components/sections/AdvantagesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import RecentWorksSection from "@/components/sections/RecentWorksSection";
-import Footer from "@/layouts/Footer";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,9 +35,9 @@ export default function Home() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="relative h-full w-full min-h-screen">
-      {/* Background fluid animation */}
-      <div className="absolute inset-0">
+    <div className="relative w-full min-h-screen">
+      {/* Continuous Background Layer - Fixed */}
+      <div className="fixed inset-0 -z-30">
         {!isMobile ? (
           <LiquidEther
             colors={["#1D4486", "#1E96C9", "#ffffff"]}
@@ -61,7 +60,8 @@ export default function Home() {
           <div className="liquid-ether-fallback w-full h-full" />
         )}
       </div>
-      <div className="absolute inset-0">
+
+      <div className="fixed inset-0 -z-20 mix-blend-screen pointer-events-none">
         <LightRays
           raysOrigin="top-center"
           raysColor="#00ffff"
@@ -75,31 +75,30 @@ export default function Home() {
           className="custom-rays"
         />
       </div>
+      {/* Global Background Ambiance - Scrolling Highlights */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        {/* Highlight for Results Section */}
+        <div className="absolute top-[800px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#1E96C9]/15 rounded-full blur-[100px] mix-blend-screen" />
+
+        {/* Highlight for Recent Works */}
+        <div className="absolute top-[1600px] right-0 translate-x-1/3 w-[900px] h-[900px] bg-purple-600/10 rounded-full blur-[120px] mix-blend-screen" />
+
+        {/* Highlight for Capabilities/Advantages */}
+        <div className="absolute top-[2800px] left-0 -translate-x-1/3 w-[1000px] h-[1000px] bg-[#1E96C9]/10 rounded-full blur-[120px] mix-blend-screen" />
+
+        {/* Highlight for Footer Area */}
+        <div className="absolute bottom-0 w-full h-[600px] bg-indigo-900/20 blur-[100px]" />
+      </div>
 
       {/* Hero Content */}
       <HeroSection onOpenModal={openModal} />
-
-      {/* Capabilities Section */}
-      <CapabilitiesSection />
-
-      {/* Results Section */}
       <ResultsSection />
-
-      {/* Advantages Section */}
-      <AdvantagesSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-
-      {/* Recent Works Section */}
       <RecentWorksSection />
-
-      {/* Footer */}
-      <Footer />
-
+      <CapabilitiesSection />
+      <AdvantagesSection />
+      <TestimonialsSection />
       {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }
-         

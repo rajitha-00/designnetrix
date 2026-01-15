@@ -159,7 +159,7 @@ export const ScrollTimeline = ({
           ease: [0.25, 0.1, 0.25, 1.0] as [number, number, number, number],
         },
       },
-      viewport: { once: false, margin: "-100px" },
+      viewport: { once: true, margin: "-100px" },
     };
   };
 
@@ -362,7 +362,7 @@ export const ScrollTimeline = ({
                     variants={getCardVariants(index)}
                     initial="initial"
                     whileInView="whileInView"
-                    viewport={{ once: false, margin: "-100px" }}
+                    viewport={{ once: true, margin: "-100px" }}
                   >
                     <Card className="bg-background border">
                       <CardContent className="p-6">
