@@ -7,10 +7,15 @@ import React, {
   useState,
   TouchEvent,
 } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "./card";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Sparkles,
+  Play,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "../hooks/use-mobile";
-import Link from "next/link";
 
 export interface ThreeDCarouselItem {
   id: number;
@@ -19,6 +24,8 @@ export interface ThreeDCarouselItem {
   description: string;
   tags: string[];
   imageUrl: string;
+  videoUrl?: string; // Added video support
+  logoUrl?: string; // Added logo support
   link: string;
 }
 
@@ -26,7 +33,7 @@ interface ThreeDCarouselProps {
   items: ThreeDCarouselItem[];
   autoRotate?: boolean;
   rotateInterval?: number;
-  cardHeight?: number;
+  cardHeight?: number; // Kept for backward compatibility but might override
   title?: string;
   subtitle?: string;
   tagline?: string;
@@ -36,11 +43,8 @@ interface ThreeDCarouselProps {
 const ThreeDCarousel = ({
   items,
   autoRotate = true,
-  rotateInterval = 4000,
-  cardHeight = 500,
-  title = "From Textile to Intelligence",
-  subtitle = "Customer Cases",
-  tagline = "Explore how our textile sensor technology is revolutionizing multiple industries with intelligent fabric solutions tailored to specific needs.",
+  rotateInterval = 5000, // Slower rotation for larger cards
+  cardHeight = 600, // Default larger height
   isMobileSwipe = true,
 }: ThreeDCarouselProps) => {
   const [active, setActive] = useState(0);
@@ -49,8 +53,14 @@ const ThreeDCarousel = ({
   const [isHovering, setIsHovering] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
   const isMobile = useIsMobile();
   const minSwipeDistance = 50;
+
+  // Fix hydration error - only render particles on client
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (autoRotate && isInView && !isHovering) {
@@ -64,8 +74,11 @@ const ThreeDCarousel = ({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
+    if (carouselRef.current) {
+      observer.observe(carouselRef.current);
+    }
     return () => observer.disconnect();
   }, []);
 
@@ -88,143 +101,239 @@ const ThreeDCarousel = ({
     }
   };
 
-  const getCardAnimationClass = (index: number) => {
-    if (index === active) return "scale-100 opacity-100 z-20";
-    if (index === (active + 1) % items.length)
-      return "translate-x-[40%] scale-95 opacity-60 z-10";
-    if (index === (active - 1 + items.length) % items.length)
-      return "translate-x-[-40%] scale-95 opacity-60 z-10";
-    return "scale-90 opacity-0";
+  const getCardStyle = (index: number) => {
+    const diff = (index - active + items.length) % items.length;
+    const totalItems = items.length;
+
+    if (diff === 0) {
+      // Center card - Massive and immersive
+      return {
+        transform: "translateX(0%) scale(1) translateZ(0px)",
+        opacity: 1,
+        zIndex: 30,
+        filter: "blur(0px) brightness(1)",
+        width: isMobile ? "90vw" : "70vw", // Massive width
+        maxWidth: "1400px",
+      };
+    } else if (diff === 1 || diff === totalItems - 1) {
+      // Adjacent cards - Pushed further to sides
+      const isRight = diff === 1;
+      return {
+        transform: `translateX(${isRight ? "60%" : "-60%"}) scale(0.85) translateZ(-100px) rotateY(${isRight ? "-5deg" : "5deg"})`, // Subtle rotation
+        opacity: 0.5,
+        zIndex: 20,
+        filter: "blur(2px) brightness(0.6)",
+        width: isMobile ? "90vw" : "70vw",
+        maxWidth: "1400px",
+      };
+    } else {
+      // Hidden/Back cards
+      return {
+        transform: "translateX(0%) scale(0.5) translateZ(-200px)",
+        opacity: 0,
+        zIndex: 0,
+        filter: "blur(10px)",
+        width: isMobile ? "90vw" : "70vw",
+        maxWidth: "1400px",
+      };
+    }
   };
 
   return (
     <section
       id="ThreeDCarousel"
-      className="bg-transparent min-w-full mx-aut 
-    flex items-center justify-center"
+      className="bg-transparent w-full mx-auto flex items-center justify-center relative py-10 overflow-hidden"
+      ref={carouselRef}
     >
-      <div
-        className="w-full px-4 sm:px-6 lg:px-8 
-      min-w-[350px] md:min-w-[1000px] max-w-7xl  "
-      >
-        <div
-          className="relative overflow-hidden h-[550px] "
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          ref={carouselRef}
-        >
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center ">
-            {items.map((item, index) => (
-              <div
-                key={item.id}
-                className={`absolute top-0 w-full max-w-md transform transition-all duration-500 ${getCardAnimationClass(
-                  index
-                )}`}
-              >
-                <Card
-                  className={`overflow-hidden bg-background h-[${cardHeight}px] border shadow-sm 
-                hover:shadow-md flex flex-col`}
+      {/* Ambient glow effect */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-full h-full bg-[#1E96C9]/5 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="w-full relative z-10 h-[700px] md:h-[800px] flex items-center justify-center perspective-[2000px]">
+        {/* Cards container */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <AnimatePresence mode="popLayout">
+            {items.map((item, index) => {
+              const cardStyle = getCardStyle(index);
+              const isActive = index === active;
+
+              return (
+                <motion.div
+                  key={item.id}
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                  style={cardStyle as any}
+                  initial={false}
+                  animate={cardStyle}
                 >
+                  {/* Modern Immersive Card */}
                   <div
-                    className="relative bg-black p-6 flex items-center justify-center h-48 overflow-hidden"
-                    style={{
-                      backgroundImage: `url(${item.imageUrl})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
+                    className={`relative w-full h-[500px] md:h-[650px] rounded-3xl overflow-hidden border border-white/10 group
+                      ${isActive ? "shadow-2xl shadow-black/60 ring-1 ring-white/20" : ""}
+                    `}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
                   >
-                    <div className="absolute inset-0 bg-black/50" />
-                    <div className="relative z-10 text-center text-white">
-                      <h3 className="text-2xl font-bold mb-2">
-                        {item.brand.toUpperCase()}
-                      </h3>
-                      <div className="w-12 h-1 bg-white mx-auto mb-2" />
-                      <p className="text-sm ">{item.title}</p>
-                    </div>
-                  </div>
-
-                  <CardContent className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold mb-1 text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm font-medium mb-2">
-                      {item.brand}
-                    </p>
-                    <p className="text-gray-600 text-sm flex-grow">
-                      {item.description}
-                    </p>
-
-                    <div className="mt-4">
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {item.tags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-1 bg-gray-50 text-gray-600 rounded-full text-xs animate-pulse-slow"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                    {/* Background Media (Image/Video) */}
+                    <div className="absolute inset-0 bg-black">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                        style={{ backgroundImage: `url(${item.imageUrl})` }}
+                      >
+                        {/* Video Placeholder (if supported in future) */}
+                        {item.videoUrl && isActive && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+                              <Play
+                                className="w-6 h-6 text-white"
+                                fill="white"
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
 
-                      <a
-                        href={item.link}
-                        className="text-gray-500 flex items-center hover:underline relative group"
-                        onClick={() => {
-                          if (item.link.startsWith("/")) {
-                            window.scrollTo(0, 0);
-                          }
-                        }}
-                      >
-                        <span className="relative z-10">Learn more</span>
-                        <ArrowRight className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
-                      </a>
+                      {/* Gradient Overlays for Readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent opacity-60" />
+
+                      {/* Noise texture overlay */}
+                      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('/noise.png')] bg-repeat" />
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
 
-          {!isMobile && (
-            <>
-              <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
-                onClick={() =>
-                  setActive((prev) => (prev - 1 + items.length) % items.length)
-                }
-                aria-label="Previous"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
-                onClick={() => setActive((prev) => (prev + 1) % items.length)}
-                aria-label="Next"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </>
-          )}
+                    {/* Content Layer */}
+                    <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-12">
+                      {/* Top Bar: Brand/Logo */}
+                      <div className="flex justify-between items-start">
+                        <div className="flex items-center gap-4">
+                          {item.logoUrl ? (
+                            <img
+                              src={item.logoUrl}
+                              alt={item.brand}
+                              className="h-10 w-auto object-contain brightness-0 invert"
+                            />
+                          ) : (
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white font-bold text-lg">
+                                {item.brand.charAt(0)}
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-white font-semibold tracking-wide text-sm md:text-base">
+                                  {item.brand}
+                                </span>
+                                <span className="text-white/40 text-xs uppercase tracking-wider">
+                                  {item.tags[0]}
+                                </span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
 
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center items-center space-x-3 z-30">
-            {items.map((_, idx) => (
-              <button
-                key={idx}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  active === idx
-                    ? "bg-gray-500 w-5"
-                    : "bg-gray-200 hover:bg-gray-300"
-                }`}
-                onClick={() => setActive(idx)}
-                aria-label={`Go to item ${idx + 1}`}
-              />
-            ))}
-          </div>
+                        {/* Status/Tag */}
+                        <div className="px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                          <div
+                            className={`w-2 h-2 rounded-full ${isActive ? "bg-[#1E96C9] animate-pulse" : "bg-gray-500"}`}
+                          />
+                          <span className="text-xs font-medium text-white/80 uppercase tracking-widest">
+                            Featured
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Bottom Bar: Title, Desc, CTA */}
+                      <div className="grid md:grid-cols-[1.5fr_1fr] gap-8 items-end">
+                        <div className="space-y-6">
+                          {/* Title */}
+                          <h2
+                            className="text-4xl md:text-6xl font-bold text-white leading-[0.95] tracking-tight"
+                            style={{
+                              fontFamily: "var(--font-optft, sans-serif)",
+                            }}
+                          >
+                            {item.title}
+                            <span className="text-[#1E96C9]">.</span>
+                          </h2>
+
+                          {/* Description */}
+                          <p className="text-lg text-gray-300 leading-relaxed max-w-xl line-clamp-3 md:line-clamp-none">
+                            {item.description}
+                          </p>
+
+                          {/* Web URL / Tech Stack */}
+                          <div className="flex items-center gap-4 pt-2">
+                            {item.tags.slice(0, 3).map((tag, i) => (
+                              <span
+                                key={i}
+                                className="text-sm font-mono text-[#1E96C9] bg-[#1E96C9]/10 px-3 py-1 rounded-md border border-[#1E96C9]/20"
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* CTA Area */}
+                        <div className="flex flex-col items-start md:items-end gap-6">
+                          {/* View Project Button */}
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative overflow-hidden rounded-xl bg-white text-black px-8 py-4 font-semibold text-lg hover:bg-[#1E96C9] hover:text-white transition-all duration-300 flex items-center gap-2"
+                          >
+                            <span className="relative z-10">
+                              View Case Study
+                            </span>
+                            <ExternalLink className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                          </a>
+
+                          {/* URL Display */}
+                          <div className="text-sm font-mono text-white/40 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full border border-white/40" />
+                            {item.link
+                              .replace(/^https?:\/\//, "")
+                              .replace(/\/$/, "")}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
+
+        {/* Floating Navigation Controls */}
+        {!isMobile && (
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6 z-40 bg-black/20 backdrop-blur-xl px-6 py-3 rounded-full border border-white/10">
+            <button
+              onClick={() =>
+                setActive((prev) => (prev - 1 + items.length) % items.length)
+              }
+              className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors group"
+            >
+              <ChevronLeft className="w-6 h-6 text-white/70 group-hover:text-white" />
+            </button>
+
+            <div className="flex gap-2">
+              {items.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActive(idx)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${active === idx ? "w-8 bg-[#1E96C9]" : "bg-white/20 hover:bg-white/40"}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setActive((prev) => (prev + 1) % items.length)}
+              className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors group"
+            >
+              <ChevronRight className="w-6 h-6 text-white/70 group-hover:text-white" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

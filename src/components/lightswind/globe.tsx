@@ -226,7 +226,7 @@ const Globe: React.FC<GlobeProps> = ({
     <div
       className={cn(
         "flex items-center justify-center z-[10] mx-auto",
-        className
+        className,
       )}
       style={{
         width: "auto",
@@ -240,13 +240,13 @@ const Globe: React.FC<GlobeProps> = ({
       <canvas
         ref={canvasRef}
         style={{
-          width: "20rem", // Canvas takes full width of its parent (which is constrained)
-          height: "20rem", // Canvas takes full height of its parent (which is constrained)
-          maxWidth: "auto", // Limit max width to viewport height to ensure square aspect in landscape
-          maxHeight: "auto", // Limit max height to viewport width to ensure square aspect in portrait
-          aspectRatio: "1", // Force a 1:1 aspect ratio for the canvas element
-          display: "block", // Ensure canvas behaves as a block element
-          cursor: "grab", // Default cursor
+          width: "55rem",
+          height: "auto",
+          maxWidth: "90vw",
+          maxHeight: "90vw",
+          aspectRatio: "1",
+          display: "block",
+          cursor: "grab",
         }}
       />
     </div>

@@ -47,28 +47,28 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="/services"
-              className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+              className="text-lg font-medium text-white/80 hover:text-white transition-colors duration-200"
               style={{ fontFamily: "var(--font-sansbld)" }}
             >
               Services
             </a>
             <a
               href="/work"
-              className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+              className="text-lg font-medium text-white/80 hover:text-white transition-colors duration-200"
               style={{ fontFamily: "var(--font-sansbld)" }}
             >
               Work
             </a>
             <a
               href="/about"
-              className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+              className="text-lg font-medium text-white/80 hover:text-white transition-colors duration-200"
               style={{ fontFamily: "var(--font-sansbld)" }}
             >
               About
             </a>
             <a
               href="/contact"
-              className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+              className="text-lg font-medium text-white/80 hover:text-white transition-colors duration-200"
               style={{ fontFamily: "var(--font-sansbld)" }}
             >
               Contact

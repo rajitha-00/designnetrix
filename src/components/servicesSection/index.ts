@@ -1,0 +1,5 @@
+export * from "./HeroServies"
+export * from "./ProvenWorks"
+export * from "./Approch"
+export * from "./Services"
+export * from "./CTAService"

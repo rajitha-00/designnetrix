@@ -7,57 +7,55 @@ import { cn } from '@/lib/utils';
 
 // Button variants using class-variance-authority for better type safety and maintainability
 const buttonVariants = cva(
-  // Base styles with futuristic design elements
+  // Base styles with modern, elegant design
   [
     "relative inline-flex items-center justify-center gap-2 whitespace-nowrap",
-    "rounded-md text-sm font-medium transition-all duration-300 ease-in-out",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E96C9]/50",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "text-sm font-medium transition-all duration-300 ease-out",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1E96C9]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+    "disabled:pointer-events-none disabled:opacity-40 disabled:cursor-not-allowed",
     "group overflow-hidden",
-    // Futuristic glow effect
-    "before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-r",
-    "before:from-[#1E96C9]/20 before:via-[#5227FF]/20 before:to-[#FF9FFC]/20",
-    "before:opacity-0 before:transition-opacity before:duration-300",
-    "hover:before:opacity-100",
-    // Glass morphism effect
+    "transform-gpu",
+    // Subtle backdrop blur
     "backdrop-blur-sm",
-    // Cyberpunk border glow
-    "after:absolute after:inset-0 after:rounded-md after:border after:border-transparent",
-    "after:bg-gradient-to-r after:from-[#1E96C9] after:via-[#5227FF] after:to-[#FF9FFC]",
-    "after:bg-clip-border after:mask-composite after:transition-all after:duration-300",
-    "after:opacity-0 hover:after:opacity-30"
   ],
   {
     variants: {
       variant: {
-        // Primary - Main CTA button with gradient background
+        // Primary - Modern solid button with elegant hover
         primary: [
-          "bg-gradient-to-r from-[#1E96C9] via-[#5227FF] to-[#1E96C9]",
-          "bg-size-200 bg-pos-0 hover:bg-pos-100",
-          "text-white shadow-lg shadow-[#1E96C9]/25",
-          "hover:shadow-xl hover:shadow-[#1E96C9]/40",
-          "hover:scale-[1.02] active:scale-[0.98]",
-          "border border-[#1E96C9]/30"
+          "bg-[#1E96C9]",
+          "text-white font-semibold",
+          "shadow-lg shadow-[#1E96C9]/20",
+          "hover:shadow-2xl hover:shadow-[#1E96C9]/30",
+          "hover:bg-[#1a85b3]",
+          "hover:-translate-y-0.5",
+          "active:translate-y-0 active:shadow-lg",
+          "border border-[#1E96C9]/20",
+          // Shine effect
+          "before:absolute before:inset-0 before:rounded-lg",
+          "before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent",
+          "before:-translate-x-full before:transition-transform before:duration-700",
+          "hover:before:translate-x-full",
         ],
-        // Secondary - Outlined with gradient border
+        // Secondary - Elegant outlined button
         secondary: [
-          "bg-black/40 border-2 border-transparent",
-          "text-white/90 hover:text-white",
-          "shadow-lg shadow-black/20",
-          "hover:bg-black/60 hover:shadow-xl",
-          "hover:scale-[1.02] active:scale-[0.98]",
-          // Animated gradient border
-          "bg-gradient-to-r from-[#1E96C9] via-[#5227FF] to-[#FF9FFC]",
-          "bg-clip-padding",
-          "[background-clip:padding-box,border-box]",
-          "[background-image:linear-gradient(black,black),linear-gradient(90deg,#1E96C9,#5227FF,#FF9FFC)]"
+          "bg-white/5 border-2 border-white/20",
+          "text-white font-semibold",
+          "shadow-md shadow-black/10",
+          "hover:bg-[#1E96C9]/10",
+          "hover:border-[#1E96C9]/60",
+          "hover:shadow-lg hover:shadow-[#1E96C9]/10",
+          "hover:-translate-y-0.5",
+          "active:translate-y-0",
+          "backdrop-blur-md",
         ],
-        // Ghost - Minimal with hover effects
+        // Ghost - Minimal elegant button
         ghost: [
-          "bg-transparent text-white/70 hover:text-white",
-          "hover:bg-white/5 backdrop-blur-sm",
-          "border border-white/10 hover:border-white/20",
-          "hover:shadow-lg hover:shadow-[#1E96C9]/20"
+          "bg-transparent text-white/80 hover:text-white",
+          "hover:bg-white/5",
+          "border border-white/10 hover:border-white/30",
+          "hover:shadow-md hover:shadow-[#1E96C9]/10",
+          "transition-all duration-200",
         ],
         // Destructive - For dangerous actions
         destructive: [
@@ -66,42 +64,47 @@ const buttonVariants = cva(
           "hover:from-red-700 hover:to-red-800",
           "hover:shadow-xl hover:shadow-red-600/40",
           "hover:scale-[1.02] active:scale-[0.98]",
-          "border border-red-600/30"
+          "border border-red-600/30",
         ],
-        // Link - Text button with underline effect
+        // Link - Clean text button
         link: [
-          "text-[#1E96C9] underline-offset-4 hover:underline",
-          "hover:text-[#5227FF] p-0 h-auto",
-          "transition-colors duration-200"
+          "text-[#1E96C9] underline-offset-4",
+          "hover:text-[#1a85b3]",
+          "hover:underline",
+          "p-0 h-auto",
+          "transition-all duration-200",
         ],
-        // Neon - Glowing futuristic button
+        // Neon - Modern glowing button
         neon: [
-          "bg-black/80 border border-[#1E96C9]",
+          "bg-black/60 border-2 border-[#1E96C9]",
           "text-[#1E96C9] hover:text-white",
-          "shadow-[0_0_10px_#1E96C9,0_0_20px_#1E96C9,0_0_30px_#1E96C9]",
-          "hover:shadow-[0_0_15px_#1E96C9,0_0_25px_#1E96C9,0_0_35px_#1E96C9]",
-          "hover:bg-[#1E96C9]/10 hover:border-[#5227FF]",
-          "transition-all duration-300"
-        ]
+          "shadow-[0_0_15px_rgba(30,150,201,0.3)]",
+          "hover:shadow-[0_0_25px_rgba(30,150,201,0.5)]",
+          "hover:bg-[#1E96C9]/15",
+          "hover:-translate-y-0.5",
+          "active:translate-y-0",
+          "backdrop-blur-md",
+          "transition-all duration-300",
+        ],
       },
       size: {
         sm: "h-8 px-3 text-xs gap-1",
         default: "h-10 px-4 py-2 gap-2",
         lg: "h-11 px-6 text-base gap-2",
         xl: "h-12 px-8 text-lg gap-3",
-        icon: "h-9 w-9 p-0"
+        icon: "h-9 w-9 p-0",
       },
       fullWidth: {
         true: "w-full",
-        false: "w-auto"
-      }
+        false: "w-auto",
+      },
     },
     defaultVariants: {
       variant: "primary",
       size: "default",
-      fullWidth: false
-    }
-  }
+      fullWidth: false,
+    },
+  },
 );
 
 // Icon position variants

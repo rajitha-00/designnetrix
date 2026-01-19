@@ -35,7 +35,7 @@ export default function Home() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen ">
       {/* Continuous Background Layer - Fixed */}
       <div className="fixed inset-0 -z-30">
         {!isMobile ? (
