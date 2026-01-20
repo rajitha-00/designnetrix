@@ -8,10 +8,11 @@ const recentWorks = [
   {
     icon: Globe,
     title: "E-Commerce Platform",
-    description: "Modern shopping experience with seamless checkout and inventory management",
+    description:
+      "Modern shopping experience with seamless checkout and inventory management",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80"
+        src="/projects/EatfitWeb.png"
         alt="E-Commerce Platform"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
@@ -24,7 +25,7 @@ const recentWorks = [
     description: "Secure financial transactions with intuitive user interface",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+        src="/projects/RhCleaningWeb.png"
         alt="Mobile Banking App"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
@@ -34,10 +35,11 @@ const recentWorks = [
   {
     icon: ShoppingCart,
     title: "Retail Dashboard",
-    description: "Real-time analytics and inventory tracking for retail businesses",
+    description:
+      "Real-time analytics and inventory tracking for retail businesses",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+        src="/projects/EatfitWeb.png"
         alt="Retail Dashboard"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
@@ -47,10 +49,11 @@ const recentWorks = [
   {
     icon: Briefcase,
     title: "Corporate Website",
-    description: "Professional business presence with modern design and SEO optimization",
+    description:
+      "Professional business presence with modern design and SEO optimization",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+        src="/projects/XiangYunWeb.png"
         alt="Corporate Website"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
@@ -60,10 +63,11 @@ const recentWorks = [
   {
     icon: Laptop,
     title: "SaaS Platform",
-    description: "Cloud-based solution with subscription management and team collaboration",
+    description:
+      "Cloud-based solution with subscription management and team collaboration",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+        src="/projects/RhCleaningWeb.png"
         alt="SaaS Platform"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
@@ -73,10 +77,11 @@ const recentWorks = [
   {
     icon: Trophy,
     title: "Booking System",
-    description: "Complete reservation management with calendar integration and payments",
+    description:
+      "Complete reservation management with calendar integration and payments",
     background: (
       <img
-        src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80"
+        src="/projects/XiangYunWeb.png"
         alt="Booking System"
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />

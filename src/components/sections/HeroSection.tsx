@@ -19,7 +19,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           style={{ fontFamily: "var(--font-sansbld)" }}
           className="mb-4 text-xs sm:text-sm font-medium tracking-widest text-[#1E96C9] uppercase tracking-widest"
         >
-          Think. Create. Launch.
+          Beyond Conventional Design.
         </p>
       </motion.div>
       <motion.h1
@@ -29,12 +29,11 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tighter"
         style={{ fontFamily: "var(--font-optft)" }}
       >
-        Drive Growth with
+        Human Creativity Meets
         <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#1E96C9] via-white to-[#1E96C9]/20 relative z-20">
-          Performance
+          Artificial Intelligence
         </span>
-        <br />& Precision
       </motion.h1>
       {/* Sub-headline - Enhanced for mobile */}
       <motion.p
@@ -42,20 +41,11 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         style={{ fontFamily: "var(--font-sansbld)" }}
-        className="max-w-4xl mb-10 sm:mb-12 text-sm sm:text-base lg:text-xl text-gray-300 font-medium px-2 sm:px-0 leading-relaxed"
+        className="max-w-4xl mb-10 sm:mb-12 text-sm sm:text-base lg:text-xl text-gray-300 font-medium px-2 sm:px-0 leading-relaxed mt-10"
       >
-        Your website is your{" "}
-        <span className="text-white font-bold">digital headquarters</span>. We
-        build it with the same excellence you expect in your physical
-        properties:{" "}
-        <span className="text-white font-bold">
-          secure, scalable Next.js architecture
-        </span>{" "}
-        and{" "}
-        <span className="text-white font-bold">
-          award-winning visual storytelling
-        </span>{" "}
-        that commands authority and attracts ideal clients.
+        DesignNetrix transforms businesses with cutting-edge web development,
+        custom AI consultation, and cinematic digital marketing. We build the
+        systems that define tomorrow.
       </motion.p>
 
       <motion.div
@@ -69,9 +59,8 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           onClick={onOpenModal}
           variant="primary"
           loading={false}
-          className="mx-auto shadow-[0_0_20px_rgba(30,150,201,0.5)] hover:shadow-[0_0_30px_rgba(30,150,201,0.8)] transition-shadow duration-300"
         >
-          Request a Strategic Consultation
+          Let&apos;s Build Your Future
         </Button>
       </motion.div>
     </div>

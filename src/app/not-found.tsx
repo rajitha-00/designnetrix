@@ -19,7 +19,7 @@ export default function NotFound() {
   };
 
   const handleEmail = () => {
-    const email = "designnetix@icloud.com";
+    const email = "designnetix@outlook.com";
     const subject = "Website Navigation Issue";
     const body = "Hi! I encountered a broken link on your website. I'd like to learn more about your services.";
     const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;

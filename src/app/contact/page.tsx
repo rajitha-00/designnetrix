@@ -31,13 +31,13 @@ const ContactPage = () => {
     {
       icon: <Mail className="w-6 h-6 text-[#1E96C9]" />,
       label: "Email",
-      value: "designnetix@icloud.com",
-      link: "mailto:designnetix@icloud.com",
+      value: "designnetix@outlook.com",
+      link: "mailto:designnetix@outlook.com",
     },
     {
       icon: <Phone className="w-6 h-6 text-[#1E96C9]" />,
       label: "Phone",
-      value: "+94 70 440 9960",
+      value: "+94 70 714 0146",
       link: "tel:+94704409960",
     },
     {
@@ -65,37 +65,37 @@ const ContactPage = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="mb-16 md:mb-24">
-            <motion.h4 
+            <motion.h4
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-[#1E96C9] font-mono tracking-widest uppercase text-sm mb-4"
             >
               Get In Touch
             </motion.h4>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
-              style={{ fontFamily: 'var(--font-optft)' }}
+              style={{ fontFamily: "var(--font-optft)" }}
             >
-              Let's craft your <br />
+              Let&apos;s craft your <br />
               <span className="text-white/40">digital future.</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed"
             >
-              Have a project in mind? We'd love to hear from you. 
-              Our team usually responds within 24 hours.
+              Have a project in mind? We&apos;d love to hear from you. Our team
+              usually responds within 24 hours.
             </motion.p>
           </div>
 
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-24 items-start">
             {/* Contact Info Column */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -103,7 +103,7 @@ const ContactPage = () => {
             >
               <div className="space-y-8">
                 {contactInfos.map((info, idx) => (
-                  <a 
+                  <a
                     key={idx}
                     href={info.link}
                     className="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300"
@@ -145,16 +145,21 @@ const ContactPage = () => {
               <div className="bg-[#25D366]/10 border border-[#25D366]/20 rounded-3xl p-6 md:p-8">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/20">
-                    <MessageCircle className="w-7 h-7 text-white" fill="white" />
+                    <MessageCircle
+                      className="w-7 h-7 text-white"
+                      fill="white"
+                    />
                   </div>
                   <div>
                     <h4 className="font-bold text-xl">Quick Chat</h4>
                     <p className="text-gray-400 text-sm">Response in minutes</p>
                   </div>
                 </div>
-                <Button 
+                <Button
                   className="w-full bg-[#25D366] hover:bg-[#20ba56] text-black font-bold h-12 rounded-xl border-none"
-                  onClick={() => window.open('https://wa.me/94704409960', '_blank')}
+                  onClick={() =>
+                    window.open("https://wa.me/94704409960", "_blank")
+                  }
                 >
                   Message on WhatsApp
                 </Button>
@@ -169,7 +174,7 @@ const ContactPage = () => {
               className="relative"
             >
               {isSubmitted ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-12 text-center"
@@ -179,10 +184,11 @@ const ContactPage = () => {
                   </div>
                   <h3 className="text-3xl font-bold mb-4">Message Sent!</h3>
                   <p className="text-gray-400 text-lg mb-8">
-                    Thank you for reaching out. We've received your message and will get back to you shortly.
+                    Thank you for reaching out. We&apos;ve received your message
+                    and will get back to you shortly.
                   </p>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     onClick={() => setIsSubmitted(false)}
                     className="text-[#1E96C9] hover:bg-[#1E96C9]/10"
                   >
@@ -190,60 +196,76 @@ const ContactPage = () => {
                   </Button>
                 </motion.div>
               ) : (
-                <form 
+                <form
                   onSubmit={handleSubmit}
                   className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 space-y-8 shadow-2xl"
                 >
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-400 ml-1">Your Name</label>
-                      <input 
+                      <label className="text-sm font-medium text-gray-400 ml-1">
+                        Your Name
+                      </label>
+                      <input
                         required
-                        type="text" 
+                        type="text"
                         placeholder="John Doe"
                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E96C9]/50 focus:border-[#1E96C9] transition-all"
                         value={formState.name}
-                        onChange={(e) => setFormState({...formState, name: e.target.value})}
+                        onChange={(e) =>
+                          setFormState({ ...formState, name: e.target.value })
+                        }
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-400 ml-1">Email Address</label>
-                      <input 
+                      <label className="text-sm font-medium text-gray-400 ml-1">
+                        Email Address
+                      </label>
+                      <input
                         required
-                        type="email" 
+                        type="email"
                         placeholder="john@example.com"
                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E96C9]/50 focus:border-[#1E96C9] transition-all"
                         value={formState.email}
-                        onChange={(e) => setFormState({...formState, email: e.target.value})}
+                        onChange={(e) =>
+                          setFormState({ ...formState, email: e.target.value })
+                        }
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400 ml-1">Subject</label>
-                    <input 
+                    <label className="text-sm font-medium text-gray-400 ml-1">
+                      Subject
+                    </label>
+                    <input
                       required
-                      type="text" 
+                      type="text"
                       placeholder="What are you interested in?"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E96C9]/50 focus:border-[#1E96C9] transition-all"
                       value={formState.subject}
-                      onChange={(e) => setFormState({...formState, subject: e.target.value})}
+                      onChange={(e) =>
+                        setFormState({ ...formState, subject: e.target.value })
+                      }
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400 ml-1">Your Message</label>
-                    <textarea 
+                    <label className="text-sm font-medium text-gray-400 ml-1">
+                      Your Message
+                    </label>
+                    <textarea
                       required
                       rows={6}
                       placeholder="Tell us about your project..."
                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E96C9]/50 focus:border-[#1E96C9] transition-all resize-none"
                       value={formState.message}
-                      onChange={(e) => setFormState({...formState, message: e.target.value})}
+                      onChange={(e) =>
+                        setFormState({ ...formState, message: e.target.value })
+                      }
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full h-16 rounded-2xl bg-[#1E96C9] hover:bg-[#1e85b2] text-white font-bold text-lg flex items-center justify-center gap-3 transition-all active:scale-[0.98] disabled:opacity-50"

@@ -16,15 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DesignNetrix | Websites & Branding That Drive Company Growth",
+  title: "DesignNetrix | AI-Powered Web Development & Creative Agency",
   description:
-    "Looking to build a website for your company? DesignNetrix creates fast, SEO-friendly Next.js websites and memorable branding that establishes authority, drives growth, and converts visitors. Launch with impact.",
+    "DesignNetrix is a global creative agency specializing in AI agent development, bespoke web applications, and cinematic digital marketing. Serving businesses in the UK, Australia, and Sri Lanka with future-proof digital solutions.",
   keywords:
-    "build a website for company, build company website, company website development, corporate branding agency, website for company growth, lead generation website, Next.js development, corporate web design",
+    "creative agency UK, digital marketing Australia, web development Sri Lanka, AI agent development, custom AI solutions, corporate branding, professional photography, cinematic videography, SEO services",
   openGraph: {
-    title: "DesignNetrix | Build Your Company Website & Brand",
+    title: "DesignNetrix | Global AI & Creative Agency",
     description:
-      "We build high-performance websites and powerful branding for companies that drive growth and establish authority.",
+      "Transforming businesses with AI-powered web development, cinematic marketing, and expert branding across the UK, Australia, and Sri Lanka.",
     type: "website",
   },
 };

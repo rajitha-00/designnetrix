@@ -82,12 +82,12 @@ export default function ContactModal({ isOpen, onClose, className }: ContactModa
   };
 
   const handleEmail = () => {
-    const email = "designnetix@icloud.com";
+    const email = "designnetix@outlook.com";
     const subject = "Strategic Consultation Request";
     const body =
       "Hi! I'm interested in discussing my website and branding needs. Please let me know your availability for a consultation.";
     const emailUrl = `mailto:${email}?subject=${encodeURIComponent(
-      subject
+      subject,
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = emailUrl;
     onClose();
@@ -96,7 +96,12 @@ export default function ContactModal({ isOpen, onClose, className }: ContactModa
   if (!isOpen) return null;
 
   return (
-    <div className={cn("fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6", className)}>
+    <div
+      className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6",
+        className,
+      )}
+    >
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
@@ -151,7 +156,7 @@ export default function ContactModal({ isOpen, onClose, className }: ContactModa
                   WhatsApp
                 </h4>
                 <p className="text-white/60 text-xs sm:text-sm truncate">
-                  +94 70 440 9960
+                  +94 70 714 0146
                 </p>
               </div>
             </div>
@@ -176,7 +181,7 @@ export default function ContactModal({ isOpen, onClose, className }: ContactModa
                   Email
                 </h4>
                 <p className="text-white/60 text-xs sm:text-sm truncate">
-                  designnetix@icloud.com
+                  designnetix@outlook.com
                 </p>
               </div>
             </div>

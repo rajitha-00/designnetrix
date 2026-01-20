@@ -6,11 +6,11 @@ import ThreeDHoverGallery from "../lightswind/3d-hover-gallery";
 
 // Example placeholder images (should be replaced with actual project/office shots)
 const GALLERY_IMAGES = [
-  "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop", 
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop"
+  "/projects/RealmMobile.png",
+  "/projects/EatfitMobile.png",
+  "/projects/RhCleaningMobile.png",
+  "/projects/SkyGardenPos.png",
+  "/projects/XiangYunMobilepng.png",
 ];
 
 export const CTAService = () => {

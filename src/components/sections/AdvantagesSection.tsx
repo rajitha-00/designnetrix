@@ -28,11 +28,11 @@ export default function AdvantagesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-           initial={{ opacity: 0, y: 30 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.8, ease: "easeOut" as const }}
-           className="mb-12 lg:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
+          className="mb-12 lg:mb-16"
         >
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
@@ -44,26 +44,26 @@ export default function AdvantagesSection() {
             style={{ fontFamily: "var(--font-optft)" }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
           >
-            WHAT YOU GAIN WHEN YOU{" "}
-            <span className="block text-glow-blue">PARTNER WITH US</span>
+            THE DEFINITIVE{" "}
+            <span className="text-glow-blue">COMPETITIVE EDGE</span>
           </h2>
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl"
           >
-            Building digital products in-house demands resources, expertise, and
-            time you may not have. Designetrix removes that friction, letting you
-            compete at full strength while we handle the engineering.
+            Stop burning resources on internal hiring and training. DesignNetrix
+            provides the specialized engineering power you need to outpace
+            competition and scale globally at record speed.
           </p>
         </motion.div>
 
         {/* Advantages Grid */}
         <motion.div
-           variants={containerVariants}
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, margin: "-100px" }}
-           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
         >
           {/* Advantage 1 - Save Time */}
           <motion.div variants={itemVariants} className="relative group">
@@ -93,14 +93,15 @@ export default function AdvantagesSection() {
                     style={{ fontFamily: "var(--font-optft)" }}
                     className="text-2xl lg:text-3xl font-bold text-white group-hover:text-glow-blue transition-all duration-300"
                   >
-                    SAVE TIME
+                    ZERO TALENT FRICTION
                   </h3>
                   <p
                     style={{ fontFamily: "var(--font-sansbld)" }}
                     className="text-gray-300 text-sm lg:text-base leading-relaxed"
                   >
-                    Eliminate months of hiring and training. We deliver
-                    ready-to-launch digital products on your timeline.
+                    Bypass the 3-6 month hiring cycle. Get instant access to a
+                    battle-tested team of AI engineers and full-stack
+                    architects.
                   </p>
                 </div>
               </div>
@@ -135,14 +136,14 @@ export default function AdvantagesSection() {
                     style={{ fontFamily: "var(--font-optft)" }}
                     className="text-2xl lg:text-3xl font-bold text-white group-hover:text-glow transition-all duration-300"
                   >
-                    MODERNIZE FAST
+                    SCALABLE INNOVATION
                   </h3>
                   <p
                     style={{ fontFamily: "var(--font-sansbld)" }}
                     className="text-gray-300 text-sm lg:text-base leading-relaxed"
                   >
-                    Transform your digital presence with contemporary design and
-                    technology that positions you as an industry leader.
+                    Deploy enterprise-grade technology—from high-end Next.js
+                    platforms to custom AI agents—tailored for massive growth.
                   </p>
                 </div>
               </div>
@@ -177,14 +178,14 @@ export default function AdvantagesSection() {
                     style={{ fontFamily: "var(--font-optft)" }}
                     className="text-2xl lg:text-3xl font-bold text-white group-hover:text-glow transition-all duration-300"
                   >
-                    DRIVE GROWTH
+                    GLOBAL VELOCITY
                   </h3>
                   <p
                     style={{ fontFamily: "var(--font-sansbld)" }}
                     className="text-gray-300 text-sm lg:text-base leading-relaxed"
                   >
-                    Increase revenue and engagement with digital products
-                    engineered for conversion and user retention.
+                    Launch mega-projects within an average of 6 weeks. Our
+                    streamlined systems deliver results across UK, AU, and SL.
                   </p>
                 </div>
               </div>
@@ -194,11 +195,11 @@ export default function AdvantagesSection() {
 
         {/* CTA Section */}
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.6, delay: 0.4 }}
-           className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center gap-4"
         >
           <Button
             variant="secondary"
@@ -221,7 +222,7 @@ export default function AdvantagesSection() {
             }
             iconPosition="right"
           >
-            Arrow
+            Start Your Project
           </Button>
         </motion.div>
       </div>

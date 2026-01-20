@@ -2,45 +2,67 @@
 
 import { Button } from "@/components/Button";
 import ChainCarousel, { ChainItem } from "@/components/lightswind/chain-carosoule";
-import { Palette, Rocket, Award, Gauge, TrendingUp } from "lucide-react";
+import {
+  Palette,
+  Rocket,
+  Brain,
+  Cpu,
+  Smartphone,
+  Video,
+  BarChart3,
+  Globe,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 const capabilitiesData: ChainItem[] = [
   {
-    id: "white-label-solutions",
-    name: "WHITE-LABEL SOLUTIONS",
-    details: "Launch branded web and app experiences without the overhead of an internal development team.",
-    icon: Award,
+    id: "ai-agent-engineering",
+    name: "AI AGENT ENGINEERING",
+    details:
+      "Automate operations and enhance customer engagement with custom-built AI agents and expert consultation.",
+    icon: Brain,
   },
   {
-    id: "ux-driven-design",
-    name: "UX-DRIVEN DESIGN",
-    details: "Every interface is built by experts who understand how people interact with technology.",
+    id: "bespoke-web-ecosystems",
+    name: "BESPOKE WEB ECOSYSTEMS",
+    details:
+      "High-performance web platforms built with Next.js and React, optimized for ultimate scalability and SEO.",
+    icon: Cpu,
+  },
+  {
+    id: "modern-app-suites",
+    name: "MODERN APPLICATION SUITES",
+    details:
+      "Seamless mobile and web applications designed with a focus on intuitive user experiences and reliability.",
+    icon: Smartphone,
+  },
+  {
+    id: "strategic-branding",
+    name: "STRATEGIC BRANDING",
+    details:
+      "Establish a powerful visual identity and emotional connection that builds trust and defines your authority.",
     icon: Palette,
   },
   {
-    id: "fast-deployment",
-    name: "FAST DEPLOYMENT",
-    details: "Get to market quickly with streamlined processes and proven methodologies.",
+    id: "cinematic-media",
+    name: "CINEMATIC MEDIA PRODUCTION",
+    details:
+      "Professional property photography and videography that captures your assets with cinematic impact.",
+    icon: Video,
+  },
+  {
+    id: "performance-marketing",
+    name: "PERFORMANCE MARKETING",
+    details:
+      "Data-driven digital marketing strategies focused on ROI and scaling your presence across global markets.",
+    icon: BarChart3,
+  },
+  {
+    id: "digital-strategy",
+    name: "DIGITAL STRATEGY",
+    details:
+      "Expert consultation to navigate digital transformation and scale your business from local to global.",
     icon: Rocket,
-  },
-  {
-    id: "branded-solutions",
-    name: "BRANDED SOLUTIONS",
-    details: "Deploy web and app experiences that carry your name without maintaining a development department.",
-    icon: Award,
-  },
-  {
-    id: "performance-optimization",
-    name: "PERFORMANCE OPTIMIZATION",
-    details: "Lightning-fast load times and seamless user experiences built on cutting-edge technology stacks.",
-    icon: Gauge,
-  },
-  {
-    id: "scalable-architecture",
-    name: "SCALABLE ARCHITECTURE",
-    details: "Future-proof solutions that grow with your business, handling increased traffic and complexity.",
-    icon: TrendingUp,
   },
 ];
 
@@ -50,11 +72,11 @@ export default function CapabilitiesSection() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header - Centered */}
         <motion.div
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           className="text-center mb-12 lg:mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-12 lg:mb-16"
         >
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
@@ -75,8 +97,10 @@ export default function CapabilitiesSection() {
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto mb-8"
           >
-            We build digital products that work. From concept to deployment,
-            every detail is crafted for performance and results.
+            We don&apos;t just build websites; we engineer digital ecosystems.
+            From AI-driven automation to cinematic storytelling, our
+            capabilities are designed to give you a definitive edge in the
+            global market.
           </p>
 
           {/* CTA Button */}
