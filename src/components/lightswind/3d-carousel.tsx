@@ -7,6 +7,7 @@ import React, {
   useState,
   TouchEvent,
 } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import { useIsMobile } from "../hooks/use-mobile";
@@ -196,9 +197,11 @@ const ThreeDCarousel = ({
                       <div className="flex justify-between items-start">
                         <div className="flex items-center gap-4">
                           {item.logoUrl ? (
-                            <img
+                            <Image
                               src={item.logoUrl}
                               alt={item.brand}
+                              width={40}
+                              height={40}
                               className="h-10 w-auto object-contain brightness-0 invert"
                             />
                           ) : (

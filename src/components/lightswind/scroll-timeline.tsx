@@ -1,12 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  MotionValue,
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { cn } from "../../lib/utils";
 import { Card, CardContent } from "./card";
 import { Calendar } from "lucide-react";
@@ -73,11 +67,9 @@ export const ScrollTimeline = ({
   animationOrder = "sequential",
   cardAlignment = "alternating",
   lineColor = "bg-primary/30",
-  activeColor = "bg-primary",
   progressIndicator = true,
   cardVariant = "default",
   cardEffect = "none",
-  parallaxIntensity = 0.2,
   progressLineWidth = 2,
   progressLineCap = "round",
   dateFormat = "badge",
@@ -86,7 +78,6 @@ export const ScrollTimeline = ({
   connectorStyle = "line",
   perspective = false,
   darkMode = false,
-  smoothScroll = true,
 }: ScrollTimelineProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -124,8 +115,8 @@ export const ScrollTimeline = ({
       animationOrder === "simultaneous"
         ? 0
         : animationOrder === "staggered"
-        ? index * 0.2
-        : index * 0.3;
+          ? index * 0.2
+          : index * 0.3;
 
     const initialStates = {
       fade: { opacity: 0, y: 20 },
@@ -134,10 +125,10 @@ export const ScrollTimeline = ({
           cardAlignment === "left"
             ? -100
             : cardAlignment === "right"
-            ? 100
-            : index % 2 === 0
-            ? -100
-            : 100,
+              ? 100
+              : index % 2 === 0
+                ? -100
+                : 100,
         opacity: 0,
       },
       scale: { scale: 0.8, opacity: 0 },
@@ -166,7 +157,7 @@ export const ScrollTimeline = ({
   const getConnectorClasses = () => {
     const baseClasses = cn(
       "absolute left-1/2 transform -translate-x-1/2",
-      lineColor
+      lineColor,
     );
     const widthStyle = `w-[${progressLineWidth}px]`;
     switch (connectorStyle) {
@@ -176,7 +167,7 @@ export const ScrollTimeline = ({
         return cn(
           baseClasses,
           widthStyle,
-          `[mask-image:linear-gradient(to_bottom,black_33%,transparent_33%,transparent_66%,black_66%)] [mask-size:1px_12px]`
+          `[mask-image:linear-gradient(to_bottom,black_33%,transparent_33%,transparent_66%,black_66%)] [mask-size:1px_12px]`,
         );
       case "line":
       default:
@@ -204,8 +195,9 @@ export const ScrollTimeline = ({
           ? "lg:mr-[calc(50%+20px)]"
           : "lg:ml-[calc(50%+20px)]"
         : cardAlignment === "left"
-        ? "lg:mr-auto lg:ml-0"
-        : "lg:ml-auto lg:mr-0";
+          ? "lg:mr-auto lg:ml-0"
+          : "lg:ml-auto lg:mr-0";
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const perspectiveClass = perspective
       ? "transform transition-transform hover:rotate-y-1 hover:rotate-x-1"
       : "";
@@ -215,7 +207,7 @@ export const ScrollTimeline = ({
       variantClasses[cardVariant],
       effectClasses[cardEffect],
       alignmentClassesDesktop,
-      "w-full lg:w-[calc(50%-40px)]"
+      "w-full lg:w-[calc(50%-40px)]",
     );
   };
 
@@ -225,7 +217,7 @@ export const ScrollTimeline = ({
       className={cn(
         "relative min-h-screen w-full overflow-hidden",
         darkMode ? "bg-background text-foreground" : "",
-        className
+        className,
       )}
     >
       <div className="text-center py-16 px-4">
@@ -253,8 +245,7 @@ export const ScrollTimeline = ({
                   width: progressLineWidth,
                   left: "50%",
                   transform: "translateX(-50%)",
-                  borderRadius:
-                    progressLineCap === "round" ? "9999px" : "0px",
+                  borderRadius: progressLineCap === "round" ? "9999px" : "0px",
                   background: `linear-gradient(to bottom, #22d3ee, #6366f1, #a855f7)`,
                   // Enhanced shadow for a constant glow effect along the path
                   boxShadow: `
@@ -317,14 +308,14 @@ export const ScrollTimeline = ({
                         ? "lg:justify-start"
                         : "lg:flex-row-reverse lg:justify-start"
                       : cardAlignment === "left"
-                      ? "lg:justify-start"
-                      : "lg:flex-row-reverse lg:justify-start"
+                        ? "lg:justify-start"
+                        : "lg:flex-row-reverse lg:justify-start",
                   )}
                 >
                   <div
                     className={cn(
                       "absolute top-1/2 transform -translate-y-1/2 z-30",
-                      "left-1/2 -translate-x-1/2"
+                      "left-1/2 -translate-x-1/2",
                     )}
                   >
                     <motion.div
@@ -332,7 +323,7 @@ export const ScrollTimeline = ({
                         "w-6 h-6 rounded-full border-4 bg-background flex items-center justify-center",
                         index <= activeIndex
                           ? "border-primary"
-                          : "border bg-card"
+                          : "border bg-card",
                       )}
                       animate={
                         index <= activeIndex
@@ -355,10 +346,7 @@ export const ScrollTimeline = ({
                     />
                   </div>
                   <motion.div
-                    className={cn(
-                      getCardClasses(index),
-                      "mt-12 lg:mt-0"
-                    )}
+                    className={cn(getCardClasses(index), "mt-12 lg:mt-0")}
                     variants={getCardVariants(index)}
                     initial="initial"
                     whileInView="whileInView"
@@ -376,7 +364,7 @@ export const ScrollTimeline = ({
                                 "text-sm font-bold",
                                 event.color
                                   ? `text-${event.color}`
-                                  : "text-primary"
+                                  : "text-primary",
                               )}
                             >
                               {event.year}

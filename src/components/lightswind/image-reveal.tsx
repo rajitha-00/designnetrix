@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { MoveUpRight as ArrowIcon } from "lucide-react";
+import Image from "next/image";
 
 interface VisualItem {
   key: number;
@@ -77,8 +78,10 @@ const ImageReveal: React.FC = () => {
           onMouseEnter={() => onHoverActivate(item)}
         >
           {!isLargeScreen && (
-            <img
+            <Image
               src={item.url}
+              width={320}
+              height={208}
               className="sm:w-32 sm:h-20 w-full h-52 object-cover rounded-md"
               alt={item.label}
             />
@@ -110,10 +113,8 @@ const ImageReveal: React.FC = () => {
       ))}
 
       {isLargeScreen && focusedItem && (
-        <motion.img
-          src={focusedItem.url}
-          alt={focusedItem.label}
-          className="fixed z-30 object-cover w-[300px] h-[400px] rounded-lg pointer-events-none shadow-2xl dark:bg-gray-950 bg-white"
+        <motion.div
+          className="fixed z-30 pointer-events-none"
           style={{
             left: smoothX,
             top: smoothY,
@@ -124,7 +125,15 @@ const ImageReveal: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
+        >
+          <Image
+            src={focusedItem.url}
+            alt={focusedItem.label}
+            width={300}
+            height={400}
+            className="object-cover w-[300px] h-[400px] rounded-lg shadow-2xl dark:bg-gray-950 bg-white"
+          />
+        </motion.div>
       )}
     </div>
   );

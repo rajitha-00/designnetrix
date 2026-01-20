@@ -109,11 +109,9 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
   scrollSpeedMs = 1500,
   visibleItemCount = 9,
   className = "",
-  onChainSelect,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
 
   // References for Framer Motion scroll-based animation
   const rightSectionRef = useRef<HTMLDivElement>(null);
@@ -176,23 +174,6 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
     return visibleItems;
   }, [currentIndex, items, totalItems, visibleItemCount]);
 
-  // Filtered list for search dropdown
-  const filteredItems = useMemo(() => {
-    return items.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
-  }, [items, searchTerm]);
-
-  // Handler for selecting an item from the dropdown
-  const handleSelectChain = (id: ChainItem["id"], name: string) => {
-    const index = items.findIndex((c) => c.id === id);
-    if (index !== -1) {
-      setCurrentIndex(index); // Jump to the selected item
-      setIsPaused(true); // Pause to highlight the selection
-    }
-    setSearchTerm(name); // Set search term to the selected item's name
-  };
-
   // The current item displayed in the center
   const currentItem = items[currentIndex];
 
@@ -211,8 +192,8 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
         <motion.div
           className="relative w-full max-w-md xl:max-w-2xl h-[450px] 
                 flex items-center justify-center hidden xl:flex -left-14"
-          onMouseEnter={() => !searchTerm && setIsPaused(true)}
-          onMouseLeave={() => !searchTerm && setIsPaused(false)}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           initial={{ x: "-100%", opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : {}}
           transition={{
@@ -275,8 +256,8 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
           ref={rightSectionRef}
           className="relative w-full max-w-md  xl:max-w-2xl h-[450px] 
                 flex items-center justify-center -right-14"
-          onMouseEnter={() => !searchTerm && setIsPaused(true)}
-          onMouseLeave={() => !searchTerm && setIsPaused(false)}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           initial={{ x: "100%", opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : {}}
           transition={{

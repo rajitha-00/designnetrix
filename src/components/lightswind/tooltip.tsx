@@ -98,9 +98,11 @@ const Tooltip: React.FC<TooltipProps> = ({
 
   // Clean up any pending timeouts on component unmount
   React.useEffect(() => {
+    const showTimeout = showTimeoutRef;
+    const hideTimeout = hideTimeoutRef;
     return () => {
-      if (showTimeoutRef.current) clearTimeout(showTimeoutRef.current);
-      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+      if (showTimeout.current) clearTimeout(showTimeout.current);
+      if (hideTimeout.current) clearTimeout(hideTimeout.current);
     };
   }, []);
 

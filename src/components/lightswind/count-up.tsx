@@ -1,13 +1,11 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 // Helper function to format the number
 const formatValue = (val: number, precision: number, sep: string): string => {
-  return val
-    .toFixed(precision)
-    .replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  return val.toFixed(precision).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 };
 
 export interface CountUpProps {
@@ -45,7 +43,8 @@ const animationStyles = {
 
 const colorSchemes = {
   default: "text-foreground",
-  gradient: "bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600",
+  gradient:
+    "bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600",
   primary: "text-primary",
   secondary: "text-secondary",
   custom: "", // use customColor
@@ -75,11 +74,14 @@ export function CountUp({
     return formatValue(latest, decimals, separator);
   });
 
-  const animationConfig = {
-    ...(animationStyles[animationStyle] as Record<string, unknown>),
-    ease: easingFunctions[easing],
-    duration: animationStyle === "default" ? duration : undefined,
-  };
+  const animationConfig = useMemo(
+    () => ({
+      ...(animationStyles[animationStyle] as Record<string, unknown>),
+      ease: easingFunctions[easing],
+      duration: animationStyle === "default" ? duration : undefined,
+    }),
+    [animationStyle, easing, duration],
+  );
 
   useEffect(() => {
     if (!triggerOnView) {
@@ -175,13 +177,21 @@ export function CountUp({
       // Using cn directly with string literals for classes
       className={cn(
         "inline-flex items-center justify-center text-4xl font-bold text-black dark:textwhite",
-        className
+        className,
       )}
     >
       <motion.div
         {...getHoverAnimation()}
-        className={cn("flex items-center transition-all", colorClass, numberClassName)}
-        style={colorScheme === "custom" && customColor ? { color: customColor } : undefined}
+        className={cn(
+          "flex items-center transition-all",
+          colorClass,
+          numberClassName,
+        )}
+        style={
+          colorScheme === "custom" && customColor
+            ? { color: customColor }
+            : undefined
+        }
       >
         {prefix && <span className="mr-1 text-foreground">{prefix}</span>}
         <motion.span className=" text-foreground">{rounded}</motion.span>

@@ -3,6 +3,7 @@
 import type { ThreeDCarouselItem } from "@/components/lightswind/3d-carousel";
 import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from "../lightswind/3d-scroll-trigger";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const testimonialsData: ThreeDCarouselItem[] = [
   {
@@ -68,11 +69,11 @@ export default function TestimonialsSection() {
       <div className="mx-auto">
         {/* Section Header */}
         <motion.div
-           initial={{ opacity: 0, y: 30 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.8, ease: "easeOut" as const }}
-           className="mb-12 lg:mb-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
+          className="mb-12 lg:mb-16 text-center"
         >
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
@@ -93,8 +94,9 @@ export default function TestimonialsSection() {
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto"
           >
-            Don&apos;t just take our word for it. See what our clients have to say
-            about working with DesignNetrix and the results we&apos;ve delivered.
+            Don&apos;t just take our word for it. See what our clients have to
+            say about working with DesignNetrix and the results we&apos;ve
+            delivered.
           </p>
         </motion.div>
 
@@ -113,9 +115,11 @@ export default function TestimonialsSection() {
                       {/* Avatar and Info */}
                       <div className="flex items-start gap-4 mb-4">
                         <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#1E96C9]/30 flex-shrink-0">
-                          <img
+                          <Image
                             src={testimonial.imageUrl}
                             alt={testimonial.brand}
+                            width={56}
+                            height={56}
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -171,9 +175,11 @@ export default function TestimonialsSection() {
                       {/* Avatar and Info */}
                       <div className="flex items-start gap-4 mb-4">
                         <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-purple-500/30 flex-shrink-0">
-                          <img
+                          <Image
                             src={testimonial.imageUrl}
                             alt={testimonial.brand}
+                            width={56}
+                            height={56}
                             className="w-full h-full object-cover"
                           />
                         </div>

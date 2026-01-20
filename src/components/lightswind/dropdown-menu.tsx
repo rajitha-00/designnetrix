@@ -175,20 +175,18 @@ const DropdownMenuTrigger = React.forwardRef<
       },
       onClick: (e: React.MouseEvent) => {
         handleClick(e as React.MouseEvent<HTMLButtonElement>);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((child.props as any).onClick) (child.props as any).onClick(e);
+        const childProps = child.props as React.HTMLAttributes<HTMLElement>;
+        if (childProps.onClick) childProps.onClick(e as React.MouseEvent<HTMLElement>);
       },
       onMouseEnter: (e: React.MouseEvent) => {
         handleMouseEnter(e as React.MouseEvent<HTMLElement>);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((child.props as any).onMouseEnter)
-          (child.props as any).onMouseEnter(e);
+        const childProps = child.props as React.HTMLAttributes<HTMLElement>;
+        if (childProps.onMouseEnter) childProps.onMouseEnter(e as React.MouseEvent<HTMLElement>);
       },
       onMouseLeave: (e: React.MouseEvent) => {
         handleMouseLeaveTrigger(e as React.MouseEvent<HTMLElement>);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((child.props as any).onMouseLeave)
-          (child.props as any).onMouseLeave(e);
+        const childProps = child.props as React.HTMLAttributes<HTMLElement>;
+        if (childProps.onMouseLeave) childProps.onMouseLeave(e as React.MouseEvent<HTMLElement>);
       },
     });
   }

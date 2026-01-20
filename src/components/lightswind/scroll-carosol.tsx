@@ -5,6 +5,7 @@ import React, {
   useLayoutEffect,
   forwardRef,
 } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LucideIcon } from "lucide-react";

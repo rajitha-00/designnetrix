@@ -140,14 +140,14 @@ export const DynamicNavigation = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [active, links]);
+  }, [active, links, updateHighlightPosition]);
 
   // Update when active link changes externally
   useEffect(() => {
     if (activeLink && activeLink !== active) {
       setActive(activeLink);
     }
-  }, [activeLink]);
+  }, [activeLink, active]);
 
   return (
     <nav

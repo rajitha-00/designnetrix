@@ -3,6 +3,7 @@
 import { BentoGrid } from "@/components/lightswind/bento-grid";
 import { Globe, Smartphone, ShoppingCart, Briefcase, Laptop, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const recentWorks = [
   {
@@ -11,9 +12,10 @@ const recentWorks = [
     description:
       "Modern shopping experience with seamless checkout and inventory management",
     background: (
-      <img
+      <Image
         src="/projects/EatfitWeb.png"
         alt="E-Commerce Platform"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
@@ -24,9 +26,10 @@ const recentWorks = [
     title: "Mobile Banking App",
     description: "Secure financial transactions with intuitive user interface",
     background: (
-      <img
+      <Image
         src="/projects/RhCleaningWeb.png"
         alt="Mobile Banking App"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
@@ -38,9 +41,10 @@ const recentWorks = [
     description:
       "Real-time analytics and inventory tracking for retail businesses",
     background: (
-      <img
+      <Image
         src="/projects/EatfitWeb.png"
         alt="Retail Dashboard"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
@@ -52,9 +56,10 @@ const recentWorks = [
     description:
       "Professional business presence with modern design and SEO optimization",
     background: (
-      <img
+      <Image
         src="/projects/XiangYunWeb.png"
         alt="Corporate Website"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
@@ -66,9 +71,10 @@ const recentWorks = [
     description:
       "Cloud-based solution with subscription management and team collaboration",
     background: (
-      <img
+      <Image
         src="/projects/RhCleaningWeb.png"
         alt="SaaS Platform"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
@@ -80,9 +86,10 @@ const recentWorks = [
     description:
       "Complete reservation management with calendar integration and payments",
     background: (
-      <img
+      <Image
         src="/projects/XiangYunWeb.png"
         alt="Booking System"
+        fill
         className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
