@@ -1,16 +1,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  LucideIcon,
-  TrendingUp, // Generic icon for fallback
-  Search,
-  DeleteIcon,
-} from "lucide-react";
-
-// NOTE: Placeholder for your custom Input component
-const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-  <input {...props} />
-);
+import { LucideIcon } from "lucide-react";
+import Image from "next/image";
 
 // --- Core Data Interface ---
 export interface ChainItem {
@@ -53,14 +44,7 @@ interface ChainCarouselProps {
 
 /** A single item card for the carousel. */
 const CarouselItemCard: React.FC<CarouselItemProps> = ({ chain, side }) => {
-  const {
-    distanceFromCenter,
-    id,
-    name,
-    details,
-    logo,
-    icon: FallbackIcon,
-  } = chain;
+  const { distanceFromCenter, name, details, logo, icon: FallbackIcon } = chain;
   const distance = Math.abs(distanceFromCenter);
   // Visual effects based on distance from the center (0)
   const opacity = 1 - distance / 4;
@@ -74,9 +58,11 @@ const CarouselItemCard: React.FC<CarouselItemProps> = ({ chain, side }) => {
         dark:border-muted-foreground/40 p-2 bg-foreground"
     >
       {logo ? (
-        <img
+        <Image
           src={logo}
           alt={`${name} logo`}
+          width={32}
+          height={32}
           className="size-8 rounded-full object-cover"
         />
       ) : (
@@ -128,7 +114,6 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
 
   // References for Framer Motion scroll-based animation
   const rightSectionRef = useRef<HTMLDivElement>(null);
@@ -194,7 +179,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
   // Filtered list for search dropdown
   const filteredItems = useMemo(() => {
     return items.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [items, searchTerm]);
 
@@ -204,11 +189,8 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
     if (index !== -1) {
       setCurrentIndex(index); // Jump to the selected item
       setIsPaused(true); // Pause to highlight the selection
-      if (onChainSelect) {
-      }
     }
     setSearchTerm(name); // Set search term to the selected item's name
-    setShowDropdown(false);
   };
 
   // The current item displayed in the center
@@ -265,9 +247,11 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
             <div className="flex flex-col items-center justify-center gap-0 mt-4">
               <div className="p-2 bg-foreground rounded-full">
                 {currentItem.logo ? (
-                  <img
+                  <Image
                     src={currentItem.logo}
                     alt={`${currentItem.name} logo`}
+                    width={48}
+                    height={48}
                     className="size-12 rounded-full object-cover"
                   />
                 ) : (
@@ -284,7 +268,6 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
           )}
 
           {/* Search Bar */}
-
         </div>
 
         {/* Right Section - Chain Carousel */}
@@ -310,7 +293,11 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
           </div>
 
           {getVisibleItems().map((chain) => (
-            <CarouselItemCard key={`${chain.id}-${chain.distanceFromCenter}-right`} chain={chain} side="right" />
+            <CarouselItemCard
+              key={`${chain.id}-${chain.distanceFromCenter}-right`}
+              chain={chain}
+              side="right"
+            />
           ))}
         </motion.div>
       </div>

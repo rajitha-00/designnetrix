@@ -47,8 +47,6 @@ const ThreeDHoverGallery: React.FC<ThreeDHoverGalleryProps> = ({
   grayscaleStrength = 1,
   brightnessLevel = 0.5,
   activeWidth = 45, // Increased default for wider active item
-  rotationAngle = 35,
-  zDepth = 10, // Increased default for deeper Z-axis effect
   enableKeyboardNavigation = true,
   autoPlay = false,
   autoPlayDelay = 3000,
@@ -192,7 +190,7 @@ const ThreeDHoverGallery: React.FC<ThreeDHoverGalleryProps> = ({
     <div
       className={cn(
         "flex items-center justify-center min-h-screen w-full overflow-hidden bg-background",
-        className
+        className,
       )}
       style={backgroundColor ? { backgroundColor, ...style } : style}
     >

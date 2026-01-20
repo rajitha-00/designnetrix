@@ -2,6 +2,7 @@ import React from "react";
 import { Star } from "lucide-react";
 import { cn } from "../../lib/utils"; // Adjust path if needed
 import { CountUp } from "./count-up";
+import Image from "next/image";
 
 interface TrustedUsersProps {
   avatars: string[];
@@ -27,7 +28,7 @@ export const TrustedUsers: React.FC<TrustedUsersProps> = ({
       className={cn(
         `flex items-center justify-center gap-6 bg-transparent
           text-foreground py-4 px-4`,
-        className
+        className,
       )}
     >
       <div className="flex -space-x-4">
@@ -38,12 +39,13 @@ export const TrustedUsers: React.FC<TrustedUsersProps> = ({
               ringColors[i] || "ring-blue-900"
             }`}
           >
-            <img
+            <Image
               src={src}
               alt={`Avatar ${i + 1}`}
+              width={40}
+              height={40}
               className="w-full h-full object-cover"
               loading="lazy" // Add lazy loading
-              decoding="async" // Suggest asynchronous decoding
             />
           </div>
         ))}
@@ -65,7 +67,12 @@ export const TrustedUsers: React.FC<TrustedUsersProps> = ({
             suffix="+"
             colorScheme="gradient"
           />
-          <a className="underline text-primarylw dark:text-greedy" href="/pricing">Pro users</a>
+          <a
+            className="underline text-primarylw dark:text-greedy"
+            href="/pricing"
+          >
+            Pro users
+          </a>
         </span>
       </div>
     </div>

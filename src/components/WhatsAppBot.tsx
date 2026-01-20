@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, User, Check, CheckCheck } from "lucide-react";
-import { Button } from "@/components/Button";
+import { MessageCircle, X, Send, User, CheckCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WhatsAppBot = () => {

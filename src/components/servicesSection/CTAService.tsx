@@ -24,18 +24,17 @@ export const CTAService = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          
           {/* Left Side: 3D Gallery */}
           <div className="relative h-[400px] lg:h-[600px] flex items-center justify-center -mx-8 lg:mx-0">
-             <ThreeDHoverGallery 
-               images={GALLERY_IMAGES}
-               itemWidth={15}
-               itemHeight={25}
-               activeWidth={40}
-               autoPlay={true}
-               autoPlayDelay={3000}
-               className="bg-transparent min-h-0"
-             />
+            <ThreeDHoverGallery
+              images={GALLERY_IMAGES}
+              itemWidth={15}
+              itemHeight={25}
+              activeWidth={40}
+              autoPlay={true}
+              autoPlayDelay={3000}
+              className="bg-transparent min-h-0"
+            />
           </div>
 
           {/* Right Side: Content */}
@@ -47,35 +46,40 @@ export const CTAService = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="inline-block px-4 py-1.5 rounded-full border border-[#1E96C9]/30 bg-[#1E96C9]/10 text-[#1E96C9] text-sm font-medium tracking-widest uppercase mb-8">
-                Let's Work Together
+                Let&apos;s Work Together
               </div>
-              
-              <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[0.9]"
-                  style={{ fontFamily: "var(--font-optft)" }}>
-                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#1E96C9] to-[#1E96C9]">Scale?</span>
+
+              <h2
+                className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[0.9]"
+                style={{ fontFamily: "var(--font-optft)" }}
+              >
+                Ready to{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#1E96C9] to-[#1E96C9]">
+                  Scale?
+                </span>
               </h2>
-              
+
               <p className="text-xl text-gray-400 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Turn your vision into a digital masterpiece. We build brands and products that define industries.
+                Turn your vision into a digital masterpiece. We build brands and
+                products that define industries.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                 <Button
-                    onClick={() => (window.location.href = "#contact")}
-                    variant="primary"
-                    size="xl"
-                  >
-                    Start a Project
-                  </Button>
-                  
-                  <div className="flex items-center gap-4 text-gray-500 text-sm font-medium">
-                    <span className="w-12 h-[1px] bg-white/10" />
-                    <span>OR BOOK A CALL</span>
-                  </div>
+                <Button
+                  onClick={() => (window.location.href = "#contact")}
+                  variant="primary"
+                  size="xl"
+                >
+                  Start a Project
+                </Button>
+
+                <div className="flex items-center gap-4 text-gray-500 text-sm font-medium">
+                  <span className="w-12 h-[1px] bg-white/10" />
+                  <span>OR BOOK A CALL</span>
+                </div>
               </div>
             </motion.div>
           </div>
-          
         </div>
       </div>
     </section>

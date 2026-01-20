@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Clock, Globe, MapPin } from "lucide-react";
+import { Globe } from "lucide-react";
 
 const LOCATIONS = [
   { city: "New York", time: "EST (UTC-5)", active: true },

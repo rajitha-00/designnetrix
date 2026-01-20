@@ -7,14 +7,8 @@ import React, {
   useState,
   TouchEvent,
 } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Sparkles,
-  Play,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
+import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import { useIsMobile } from "../hooks/use-mobile";
 
 export interface ThreeDCarouselItem {
@@ -44,8 +38,6 @@ const ThreeDCarousel = ({
   items,
   autoRotate = true,
   rotateInterval = 5000, // Slower rotation for larger cards
-  cardHeight = 600, // Default larger height
-  isMobileSwipe = true,
 }: ThreeDCarouselProps) => {
   const [active, setActive] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -53,14 +45,8 @@ const ThreeDCarousel = ({
   const [isHovering, setIsHovering] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
   const isMobile = useIsMobile();
   const minSwipeDistance = 50;
-
-  // Fix hydration error - only render particles on client
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     if (autoRotate && isInView && !isHovering) {
@@ -162,7 +148,7 @@ const ThreeDCarousel = ({
                 <motion.div
                   key={item.id}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                  style={cardStyle as any}
+                  style={cardStyle as MotionStyle}
                   initial={false}
                   animate={cardStyle}
                 >
@@ -173,6 +159,9 @@ const ThreeDCarousel = ({
                     `}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
                   >
                     {/* Background Media (Image/Video) */}
                     <div className="absolute inset-0 bg-black">

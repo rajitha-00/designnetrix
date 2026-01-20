@@ -74,7 +74,7 @@ const useFeatureAnimations = (
           .fromTo(
             scrollContainerRef.current,
             { x: viewportOffset },
-            { x: -finalOffset1 + viewportOffset, ease: "none" }
+            { x: -finalOffset1 + viewportOffset, ease: "none" },
           );
 
         gsap
@@ -120,7 +120,7 @@ const useFeatureAnimations = (
                   toggleActions: "play none none none",
                   once: true,
                 },
-              }
+              },
             );
           }
         });
@@ -130,7 +130,16 @@ const useFeatureAnimations = (
     return () => {
       ctx.revert();
     };
-  }, [isDesktop, maxScrollHeight]);
+  }, [
+    isDesktop,
+    maxScrollHeight,
+    cardRefs,
+    cardRefs2,
+    containerRef,
+    progressBarRef,
+    scrollContainerRef,
+    scrollContainerRef2,
+  ]);
 };
 
 // --- Component Definition ---

@@ -111,7 +111,7 @@ export function CountUp({
           });
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (containerRef.current) observer.observe(containerRef.current);
@@ -119,7 +119,14 @@ export function CountUp({
     return function () {
       return observer.disconnect();
     };
-  }, [value, triggerOnView, hasAnimated]);
+  }, [
+    value,
+    triggerOnView,
+    hasAnimated,
+    animationConfig,
+    count,
+    onAnimationComplete,
+  ]);
 
   useEffect(
     function () {
@@ -133,7 +140,14 @@ export function CountUp({
         });
       }
     },
-    [value, animationConfig, hasAnimated, triggerOnView, onAnimationComplete]
+    [
+      value,
+      animationConfig,
+      hasAnimated,
+      triggerOnView,
+      onAnimationComplete,
+      count,
+    ],
   );
 
   const colorClass =

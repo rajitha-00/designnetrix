@@ -10,7 +10,6 @@ import {
   Smartphone,
   Video,
   BarChart3,
-  Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
 

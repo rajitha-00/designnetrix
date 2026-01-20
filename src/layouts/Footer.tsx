@@ -14,6 +14,7 @@ import {
   Send,
   Sparkles
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -50,17 +51,32 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-[#0A66C2]" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-[#1DA1F2]" },
+    {
+      icon: Linkedin,
+      href: "#",
+      label: "LinkedIn",
+      color: "hover:text-[#0A66C2]",
+    },
+    {
+      icon: Twitter,
+      href: "#",
+      label: "Twitter",
+      color: "hover:text-[#1DA1F2]",
+    },
     { icon: Github, href: "#", label: "GitHub", color: "hover:text-white" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-[#E4405F]" },
+    {
+      icon: Instagram,
+      href: "#",
+      label: "Instagram",
+      color: "hover:text-[#E4405F]",
+    },
   ];
 
   return (
     <footer className="relative bg-black/40 backdrop-blur-xl border-t border-white/10 overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-emerald-500/5 animate-pulse" />
-      
+
       {/* Animated grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1E96C9/0.05_1px,transparent_1px),linear-gradient(to_bottom,#1E96C9/0.05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
 
@@ -76,9 +92,11 @@ export default function Footer() {
                 viewport={{ once: true }}
                 className="mb-4"
               >
-                <img
+                <Image
                   src="/logo_white.png"
                   alt="DesignNetrix"
+                  width={150}
+                  height={40}
                   className="h-10 w-auto"
                 />
               </motion.div>
@@ -86,8 +104,8 @@ export default function Footer() {
                 style={{ fontFamily: "var(--font-sansbld)" }}
                 className="text-gray-400 leading-relaxed max-w-md"
               >
-                Transforming ideas into digital reality. We build cutting-edge solutions
-                that drive growth and innovation.
+                Transforming ideas into digital reality. We build cutting-edge
+                solutions that drive growth and innovation.
               </p>
             </div>
 
@@ -102,8 +120,10 @@ export default function Footer() {
               </h4>
               <form onSubmit={handleSubscribe} className="relative">
                 <div className="relative group">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 
-                  group-focus-within:text-[#1E96C9] transition-colors duration-300 z-10" />
+                  <Mail
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 
+                  group-focus-within:text-[#1E96C9] transition-colors duration-300 z-10"
+                  />
                   <input
                     type="email"
                     value={email}
@@ -308,11 +328,15 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mt-8 flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-          bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+          bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs"
+          >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full 
-              bg-emerald-400 opacity-75" />
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full 
+              bg-emerald-400 opacity-75"
+              />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             All systems operational

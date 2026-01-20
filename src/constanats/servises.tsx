@@ -14,19 +14,7 @@ import {
   Home
 } from "lucide-react";
 
-export const SERVICES_TIMELINE = [
-  // Keeping this for backward compatibility if used elsewhere, 
-  // though Approach.tsx was rewritten.
-  {
-    year: "01",
-    title: "Strategic Branding",
-    subtitle: "The Foundation",
-    description: "We start by defining your core identity. Logo, voice, and visual strategy that sets you apart.",
-    icon: <Palette className="w-5 h-5" />,
-    color: "purple-400"
-  },
-  // ... (others can remain or be ignored if unused)
-];
+
 
 export const SERVISES = [
   {
