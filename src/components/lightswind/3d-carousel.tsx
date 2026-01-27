@@ -8,6 +8,7 @@ import React, {
   TouchEvent,
 } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import { useIsMobile } from "../hooks/use-mobile";
@@ -38,7 +39,7 @@ interface ThreeDCarouselProps {
 const ThreeDCarousel = ({
   items,
   autoRotate = true,
-  rotateInterval = 5000, // Slower rotation for larger cards
+  rotateInterval = 5000,
 }: ThreeDCarouselProps) => {
   const [active, setActive] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -93,34 +94,31 @@ const ThreeDCarousel = ({
     const totalItems = items.length;
 
     if (diff === 0) {
-      // Center card - Massive and immersive
       return {
         transform: "translateX(0%) scale(1) translateZ(0px)",
         opacity: 1,
         zIndex: 30,
         filter: "blur(0px) brightness(1)",
-        width: isMobile ? "90vw" : "70vw", // Massive width
+        width: isMobile ? "94vw" : "80vw",
         maxWidth: "1400px",
       };
     } else if (diff === 1 || diff === totalItems - 1) {
-      // Adjacent cards - Pushed further to sides
       const isRight = diff === 1;
       return {
-        transform: `translateX(${isRight ? "60%" : "-60%"}) scale(0.85) translateZ(-100px) rotateY(${isRight ? "-5deg" : "5deg"})`, // Subtle rotation
-        opacity: 0.5,
+        transform: `translateX(${isRight ? "55%" : "-55%"}) scale(0.85) translateZ(-150px) rotateY(${isRight ? "-8deg" : "8deg"})`,
+        opacity: 0.4,
         zIndex: 20,
-        filter: "blur(2px) brightness(0.6)",
-        width: isMobile ? "90vw" : "70vw",
+        filter: "blur(4px) brightness(0.5)",
+        width: isMobile ? "94vw" : "80vw",
         maxWidth: "1400px",
       };
     } else {
-      // Hidden/Back cards
       return {
-        transform: "translateX(0%) scale(0.5) translateZ(-200px)",
+        transform: "translateX(0%) scale(0.5) translateZ(-300px)",
         opacity: 0,
         zIndex: 0,
-        filter: "blur(10px)",
-        width: isMobile ? "90vw" : "70vw",
+        filter: "blur(15px)",
+        width: isMobile ? "94vw" : "80vw",
         maxWidth: "1400px",
       };
     }
@@ -129,16 +127,14 @@ const ThreeDCarousel = ({
   return (
     <section
       id="ThreeDCarousel"
-      className="bg-transparent w-full mx-auto flex items-center justify-center relative py-10 overflow-hidden"
+      className="bg-transparent w-full mx-auto flex items-center justify-center relative py-6 md:py-12 overflow-hidden"
       ref={carouselRef}
     >
-      {/* Ambient glow effect */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-full h-full bg-[#1E96C9]/5 rounded-full blur-[150px]" />
       </div>
 
-      <div className="w-full relative z-10 h-[700px] md:h-[800px] flex items-center justify-center perspective-[2000px]">
-        {/* Cards container */}
+      <div className="w-full relative z-10 min-h-[600px] h-[90vh] max-h-[1200px] flex items-center justify-center perspective-[2500px]">
         <div className="relative w-full h-full flex items-center justify-center">
           <AnimatePresence mode="popLayout">
             {items.map((item, index) => {
@@ -148,15 +144,14 @@ const ThreeDCarousel = ({
               return (
                 <motion.div
                   key={item.id}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
                   style={cardStyle as MotionStyle}
                   initial={false}
                   animate={cardStyle}
                 >
-                  {/* Modern Immersive Card */}
                   <div
-                    className={`relative w-full h-[500px] md:h-[650px] rounded-3xl overflow-hidden border border-white/10 group
-                      ${isActive ? "shadow-2xl shadow-black/60 ring-1 ring-white/20" : ""}
+                    className={`relative w-full h-[450px] sm:h-[550px] md:h-[80vh] max-h-[750px] rounded-[2rem] overflow-hidden border border-white/10 group
+                      ${isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20" : ""}
                     `}
                     onMouseEnter={() => setIsHovering(true)}
                     onMouseLeave={() => setIsHovering(false)}
@@ -164,36 +159,17 @@ const ThreeDCarousel = ({
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
                   >
-                    {/* Background Media (Image/Video) */}
                     <div className="absolute inset-0 bg-black">
                       <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${item.imageUrl})` }}
-                      >
-                        {/* Video Placeholder (if supported in future) */}
-                        {item.videoUrl && isActive && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                            <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                              <Play
-                                className="w-6 h-6 text-white"
-                                fill="white"
-                              />
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Gradient Overlays for Readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent opacity-60" />
-
-                      {/* Noise texture overlay */}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-95" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent opacity-70" />
                       <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url('/noise.png')] bg-repeat" />
                     </div>
 
-                    {/* Content Layer */}
-                    <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-12">
-                      {/* Top Bar: Brand/Logo */}
+                    <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8 md:p-14">
                       <div className="flex justify-between items-start">
                         <div className="flex items-center gap-4">
                           {item.logoUrl ? (
@@ -202,18 +178,18 @@ const ThreeDCarousel = ({
                               alt={item.brand}
                               width={40}
                               height={40}
-                              className="h-10 w-auto object-contain brightness-0 invert"
+                              className="h-8 md:h-12 w-auto object-contain brightness-0 invert shadow-white/10 drop-shadow-lg"
                             />
                           ) : (
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white font-bold text-lg">
+                              <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white font-bold text-lg md:text-xl">
                                 {item.brand.charAt(0)}
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-white font-semibold tracking-wide text-sm md:text-base">
+                                <span className="text-white font-semibold tracking-wide text-xs md:text-lg">
                                   {item.brand}
                                 </span>
-                                <span className="text-white/40 text-xs uppercase tracking-wider">
+                                <span className="text-white/40 text-[10px] md:text-xs uppercase tracking-wider">
                                   {item.tags[0]}
                                 </span>
                               </div>
@@ -221,23 +197,20 @@ const ThreeDCarousel = ({
                           )}
                         </div>
 
-                        {/* Status/Tag */}
-                        <div className="px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                        <div className="px-3 md:px-5 py-1 md:py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center gap-2">
                           <div
-                            className={`w-2 h-2 rounded-full ${isActive ? "bg-[#1E96C9] animate-pulse" : "bg-gray-500"}`}
+                            className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${isActive ? "bg-[#1E96C9] animate-pulse shadow-[0_0_8px_#1E96C9]" : "bg-gray-500"}`}
                           />
-                          <span className="text-xs font-medium text-white/80 uppercase tracking-widest">
+                          <span className="text-[10px] md:text-xs font-semibold text-white/90 uppercase tracking-widest">
                             Featured
                           </span>
                         </div>
                       </div>
 
-                      {/* Bottom Bar: Title, Desc, CTA */}
-                      <div className="grid md:grid-cols-[1.5fr_1fr] gap-8 items-end">
-                        <div className="space-y-6">
-                          {/* Title */}
+                      <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 md:gap-12 items-end">
+                        <div className="space-y-4 md:space-y-8">
                           <h2
-                            className="text-4xl md:text-6xl font-bold text-white leading-[0.95] tracking-tight"
+                            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tighter"
                             style={{
                               fontFamily: "var(--font-optft, sans-serif)",
                             }}
@@ -246,17 +219,15 @@ const ThreeDCarousel = ({
                             <span className="text-[#1E96C9]">.</span>
                           </h2>
 
-                          {/* Description */}
-                          <p className="text-lg text-gray-300 leading-relaxed max-w-xl line-clamp-3 md:line-clamp-none">
+                          <p className="text-sm sm:text-base md:text-xl text-gray-300/90 leading-relaxed max-w-2xl line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
                             {item.description}
                           </p>
 
-                          {/* Web URL / Tech Stack */}
-                          <div className="flex items-center gap-4 pt-2">
+                          <div className="flex flex-wrap items-center gap-2 md:gap-4 pt-1">
                             {item.tags.slice(0, 3).map((tag, i) => (
                               <span
                                 key={i}
-                                className="text-sm font-mono text-[#1E96C9] bg-[#1E96C9]/10 px-3 py-1 rounded-md border border-[#1E96C9]/20"
+                                className="text-[10px] md:text-sm font-mono text-[#1E96C9] bg-[#1E96C9]/10 px-2 md:px-4 py-0.5 md:py-1.5 rounded-lg border border-[#1E96C9]/20"
                               >
                                 #{tag}
                               </span>
@@ -264,24 +235,19 @@ const ThreeDCarousel = ({
                           </div>
                         </div>
 
-                        {/* CTA Area */}
-                        <div className="flex flex-col items-start md:items-end gap-6">
-                          {/* View Project Button */}
-                          <a
+                        <div className="flex flex-col items-start lg:items-end gap-4 md:gap-8">
+                          <Link
                             href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative overflow-hidden rounded-xl bg-white text-black px-8 py-4 font-semibold text-lg hover:bg-[#1E96C9] hover:text-white transition-all duration-300 flex items-center gap-2"
+                            className="group relative overflow-hidden rounded-2xl bg-white text-black px-6 md:px-10 py-3 md:py-5 font-bold text-sm md:text-xl hover:bg-[#1E96C9] hover:text-white transition-all duration-500 flex items-center gap-3 w-full sm:w-auto justify-center"
                           >
-                            <span className="relative z-10">
-                              View Case Study
+                            <span className="relative z-10 transition-transform duration-500">
+                              View Project
                             </span>
-                            <ExternalLink className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                          </a>
+                            <ExternalLink className="w-4 h-4 md:w-6 md:h-6 relative z-10 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                          </Link>
 
-                          {/* URL Display */}
-                          <div className="text-sm font-mono text-white/40 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full border border-white/40" />
+                          <div className="text-[10px] md:text-sm font-mono text-white/40 flex items-center gap-3 bg-white/5 py-1.5 px-3 rounded-full border border-white/5">
+                            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#1E96C9]/40" />
                             {item.link
                               .replace(/^https?:\/\//, "")
                               .replace(/\/$/, "")}
@@ -296,33 +262,32 @@ const ThreeDCarousel = ({
           </AnimatePresence>
         </div>
 
-        {/* Floating Navigation Controls */}
         {!isMobile && (
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6 z-40 bg-black/20 backdrop-blur-xl px-6 py-3 rounded-full border border-white/10">
+          <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 z-40 bg-black/40 backdrop-blur-2xl px-8 py-4 rounded-full border border-white/10 shadow-2xl">
             <button
               onClick={() =>
                 setActive((prev) => (prev - 1 + items.length) % items.length)
               }
-              className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors group"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
             >
-              <ChevronLeft className="w-6 h-6 text-white/70 group-hover:text-white" />
+              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:-translate-x-0.5" />
             </button>
 
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               {items.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActive(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${active === idx ? "w-8 bg-[#1E96C9]" : "bg-white/20 hover:bg-white/40"}`}
+                  className={`h-1.5 md:h-2 rounded-full transition-all duration-500 ${active === idx ? "w-8 md:w-12 bg-[#1E96C9]" : "w-1.5 md:w-2 bg-white/20 hover:bg-white/50"}`}
                 />
               ))}
             </div>
 
             <button
               onClick={() => setActive((prev) => (prev + 1) % items.length)}
-              className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors group"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
             >
-              <ChevronRight className="w-6 h-6 text-white/70 group-hover:text-white" />
+              <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:translate-x-0.5" />
             </button>
           </div>
         )}

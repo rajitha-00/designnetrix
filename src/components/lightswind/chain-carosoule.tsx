@@ -251,11 +251,11 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
           {/* Search Bar */}
         </div>
 
-        {/* Right Section - Chain Carousel */}
+        {/* Right Section - Chain Carousel (Hidden on smaller screens) */}
         <motion.div
           ref={rightSectionRef}
-          className="relative w-full max-w-md  xl:max-w-2xl h-[450px] 
-                flex items-center justify-center -right-14"
+          className="relative w-full max-w-md xl:max-w-2xl h-[450px] 
+                hidden xl:flex items-center justify-center -right-14"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           initial={{ x: "100%", opacity: 0 }}

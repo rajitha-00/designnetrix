@@ -145,25 +145,26 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
   }, [isOpen, onClose]);
 
   return (
-    <div ref={containerRef} className={cn("absolute w-full h-full", className)}>
+    <div ref={containerRef} className={cn("relative z-[60]", className)}>
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Krona+One:wght@400&display=swap');
           
           .hamburger-overlay-${zIndex} {
-            position: relative;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             display: flex;
-            justify-content: start;
+            justify-content: center;
             align-items: center;
             background: ${overlayBackground};
             z-index: ${zIndex};
             clip-path: circle(0px at ${buttonLeft} ${buttonTop});
-            transition: clip-path ${animationDuration}s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            ${enableBlur ? "backdrop-filter: blur(10px);" : ""}
+            transition: clip-path ${animationDuration}s cubic-bezier(0.16, 1, 0.3, 1);
+            ${enableBlur ? "backdrop-filter: blur(90px) saturate(180%);" : ""}
+            -webkit-backdrop-filter: blur(90px) saturate(180%);
           }
           
           .hamburger-overlay-${zIndex}.open {
@@ -171,31 +172,41 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
           }
           
           .hamburger-button-${zIndex} {
-            position: absolute;
-            left: ${buttonLeft};
-            top: ${buttonTop};
-            transform: translate(-50%, -50%);
-            border-radius: 20px;
+            position: relative;
             z-index: ${zIndex + 1};
             background: ${buttonColor};
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
           }
           
           .hamburger-button-${zIndex}:hover {
-            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(30, 150, 201, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 15px rgba(30, 150, 201, 0.2);
+            transform: translateY(-2px);
           }
           
           .hamburger-button-${zIndex}:focus {
-            outline: 2px solid ${textColor};
-            outline-offset: 2px;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(30, 150, 201, 0.4);
           }
           
           .menu-items-${zIndex} {
-            ${menuDirection === "horizontal" ? "display: flex; flex-wrap: wrap; gap: 1rem;" : ""}
-            ${menuAlignment === "center" ? "text-align: center;" : ""}
-            ${menuAlignment === "right" ? "text-align: right;" : ""}
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 2rem;
+            ${menuAlignment === "center" ? "text-align: center; align-items: center;" : ""}
+            ${menuAlignment === "right" ? "text-align: right; align-items: flex-end;" : "align-items: flex-start;"}
           }
           
           .menu-item-${zIndex} {
@@ -203,109 +214,103 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
             list-style: none;
             padding: 0.5rem 0;
             cursor: pointer;
-            transform: translateX(-200px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             font-family: ${fontFamily};
             font-weight: ${fontWeight};
             color: ${textColor};
-            ${menuDirection === "horizontal" ? "display: inline-block; margin: 0 1rem;" : ""}
+            text-decoration: none;
+            display: flex;
+            align-items: center;
           }
           
           .menu-item-${zIndex}.visible {
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
-          }
-          
-          .menu-item-${zIndex}::before {
-            content: "";
-            position: absolute;
-            left: -20%;
-            top: 50%;
-            transform: translate(-50%, -50%) translateX(-50%);
-            width: 25%;
-            height: 8px;
-            border-radius: 10px;
-            background: ${textColor};
-            opacity: 0;
-            transition: all 0.25s ease;
-            pointer-events: none;
-          }
-          
-          .menu-item-${zIndex}:hover::before {
-            opacity: 1;
-            transform: translate(-50%, -50%) translateX(0);
           }
           
           .menu-item-${zIndex} span {
-            opacity: 0.7;
-            transition: opacity 0.25s ease;
+            opacity: 0.6;
+            transition: all 0.4s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1.25rem;
+            letter-spacing: 0.05em;
           }
           
           .menu-item-${zIndex}:hover span {
             opacity: 1;
+            transform: translateX(10px);
+            color: #1E96C9;
           }
           
-          .menu-item-${zIndex}:focus {
-            outline: 2px solid ${textColor};
-            outline-offset: 2px;
-            border-radius: 4px;
+          .menu-icon {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
           }
           
-          /* Mobile responsiveness */
+          .menu-item-${zIndex}:hover .menu-icon {
+            background: rgba(30, 150, 201, 0.1);
+            border-color: rgba(30, 150, 201, 0.2);
+            transform: scale(1.1) rotate(5deg);
+          }
+          
           @media (max-width: 768px) {
-            .hamburger-button-${zIndex} {
-              left: 30px;
-              top: 30px;
-            }
-            
-            .hamburger-overlay-${zIndex} {
-              clip-path: circle(0px at 30px 30px);
-            }
-            
-            .hamburger-overlay-${zIndex}.open {
-              clip-path: circle(150% at 30px 30px);
-            }
-            
             .menu-items-${zIndex} {
-              padding: 1rem;
-              max-height: 80vh;
-              overflow-y: auto;
-            }
-            
-            .menu-item-${zIndex} {
-              padding: 1rem 0;
-            }
-          }
-          
-          @media (max-width: 480px) {
-            .menu-items-${zIndex} {
-              ${menuDirection === "horizontal" ? "flex-direction: column; gap: 0;" : ""}
-            }
-            
-            .menu-item-${zIndex} {
-              ${menuDirection === "horizontal" ? "display: block; margin: 0;" : ""}
+              gap: 1rem;
             }
           }
         `}
       </style>
 
+      {/* Hamburger Button */}
+      <button
+        className={cn(
+          `hamburger-button-${zIndex}`,
+          buttonSizes[buttonSize],
+          buttonClassName,
+        )}
+        onClick={toggleMenu}
+        aria-label={ariaLabel}
+        aria-expanded={isOpen}
+      >
+        {customButton || (
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Menu
+              className={cn(
+                "absolute transition-all duration-500 ease-out",
+                isOpen
+                  ? "opacity-0 rotate-90 scale-50"
+                  : "opacity-100 rotate-0 scale-100",
+              )}
+              size={buttonSize === "sm" ? 22 : buttonSize === "md" ? 24 : 28}
+              color={textColor}
+            />
+            <X
+              className={cn(
+                "absolute transition-all duration-500 ease-out",
+                isOpen
+                  ? "opacity-100 rotate-0 scale-100"
+                  : "opacity-0 -rotate-90 scale-50",
+              )}
+              size={buttonSize === "sm" ? 22 : buttonSize === "md" ? 24 : 28}
+              color={textColor}
+            />
+          </div>
+        )}
+      </button>
+
       {/* Navigation Overlay */}
       <div
         ref={navRef}
-        className={cn(`flex flex-col items-center justify-center h-full
-           hamburger-overlay-${zIndex}`, isOpen && "open")}
+        className={cn(`hamburger-overlay-${zIndex}`, isOpen && "open")}
         aria-hidden={!isOpen}
       >
-        <ul
-          className={cn(
-            `mt-20 menu-items-${zIndex}`,
-            menuDirection === "horizontal" && "flex flex-wrap "
-          )}
-        >
+        <ul className={cn(`menu-items-${zIndex}`)}>
           {items.map((item, index) => (
             <li
               key={index}
@@ -313,21 +318,16 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
                 `menu-item-${zIndex}`,
                 fontSizes[fontSize],
                 isOpen && "visible",
-                menuItemClassName
+                menuItemClassName,
               )}
               style={{
-                transitionDelay: isOpen ? `${index * staggerDelay}s` : "0s",
+                transitionDelay: isOpen
+                  ? `${0.1 + index * staggerDelay}s`
+                  : "0s",
               }}
               onClick={() => handleItemClick(item)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  handleItemClick(item);
-                }
-              }}
               tabIndex={isOpen ? 0 : -1}
               role="button"
-              aria-label={`Navigate to ${item.label}`}
             >
               <span>
                 {item.icon && <span className="menu-icon">{item.icon}</span>}
@@ -337,44 +337,6 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
           ))}
         </ul>
       </div>
-
-      {/* Hamburger Button */}
-      <button
-        className={cn(
-          `hamburger-button-${zIndex}`,
-          buttonSizes[buttonSize],
-          buttonClassName
-        )}
-        onClick={toggleMenu}
-        aria-label={ariaLabel}
-        aria-expanded={isOpen}
-        aria-controls="navigation-menu"
-      >
-        {customButton || (
-          <div className="relative w-full h-full flex items-center justify-center">
-            <Menu
-              className={cn(
-                "absolute transition-all duration-300",
-                isOpen
-                  ? "opacity-0 rotate-45 scale-0"
-                  : "opacity-100 rotate-0 scale-100"
-              )}
-              size={buttonSize === "sm" ? 16 : buttonSize === "md" ? 20 : 24}
-              color={textColor}
-            />
-            <X
-              className={cn(
-                "absolute transition-all duration-300",
-                isOpen
-                  ? "opacity-100 rotate-0 scale-100"
-                  : "opacity-0 -rotate-45 scale-0"
-              )}
-              size={buttonSize === "sm" ? 16 : buttonSize === "md" ? 20 : 24}
-              color={textColor}
-            />
-          </div>
-        )}
-      </button>
     </div>
   );
 };

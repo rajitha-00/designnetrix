@@ -5,9 +5,9 @@ import { PROJECTS_SHOWCASE } from "@/constanats/clients";
 
 export const WebShowcase = () => {
   return (
-    <section className="py-24 bg-[#050505] relative z-10">
-      <div className="container mx-auto px-6 mb-16">
-        <div className="flex items-end justify-between border-b border-white/10 pb-8">
+    <section className="py-12 md:py-24 bg-[#050505] relative z-10">
+      <div className="container mx-auto px-6 mb-8 md:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 md:pb-8">
           <div>
             <h2
               className="text-4xl md:text-5xl font-bold text-white mb-2"
@@ -26,7 +26,7 @@ export const WebShowcase = () => {
       </div>
 
       {/* 3D Carousel */}
-      <div className="relative w-full h-[600px] md:h-[800px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full min-h-[600px] h-[80vh] max-h-[1000px] flex items-center justify-center overflow-hidden">
         <Carousel items={PROJECTS_SHOWCASE} />
       </div>
     </section>

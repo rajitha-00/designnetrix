@@ -26,7 +26,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4, type: "spring" }}
-        className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tighter"
+        className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter"
         style={{ fontFamily: "var(--font-optft)" }}
       >
         Human Creativity Meets
