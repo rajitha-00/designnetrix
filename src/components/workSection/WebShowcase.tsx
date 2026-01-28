@@ -2,6 +2,7 @@
 import React from "react";
 import Carousel from "../lightswind/3d-carousel";
 import { PROJECTS_SHOWCASE } from "@/constanats/clients";
+import { SectionTitle } from "../SectionTitle";
 
 export const WebShowcase = () => {
   return (
@@ -9,12 +10,7 @@ export const WebShowcase = () => {
       <div className="container mx-auto px-6 mb-8 md:mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-6 md:pb-8">
           <div>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-2"
-              style={{ fontFamily: "var(--font-optft)" }}
-            >
-              Digital Ecosystems
-            </h2>
+            <SectionTitle subtitle="DIGITAL ECOSYSYTEMS" align="left" />
             <p className="text-[#1E96C9] tracking-widest uppercase text-sm font-medium">
               Websites • Dashboards • SaaS • POS
             </p>
@@ -26,7 +22,7 @@ export const WebShowcase = () => {
       </div>
 
       {/* 3D Carousel */}
-      <div className="relative w-full min-h-[600px] h-[80vh] max-h-[1000px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full min-h-[600px] h-[85vh] max-h-[1000px] flex items-center justify-center overflow-hidden">
         <Carousel items={PROJECTS_SHOWCASE} />
       </div>
     </section>

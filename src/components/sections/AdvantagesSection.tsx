@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { motion, Variants } from "framer-motion";
+import { SectionTitle } from "../SectionTitle";
 
 export default function AdvantagesSection() {
   const containerVariants: Variants = {
@@ -40,13 +41,11 @@ export default function AdvantagesSection() {
           >
             ADVANTAGES
           </p>
-          <h2
-            style={{ fontFamily: "var(--font-optft)" }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
-          >
-            THE DEFINITIVE{" "}
-            <span className="text-glow-blue">COMPETITIVE EDGE</span>
-          </h2>
+          <SectionTitle
+            title="THE DEFINITIVE"
+            subtitle="COMPETITIVE EDGE"
+            align="left"
+          />
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl"

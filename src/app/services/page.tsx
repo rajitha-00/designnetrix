@@ -24,9 +24,9 @@ export default function ServicesPage() {
         />
       </div>
       <HeroServies />
-      <ProvenWorks />
-      <Approch />
       <Services />
+      <Approch />
+      <ProvenWorks />
       <CTAService />
     </div>
   );

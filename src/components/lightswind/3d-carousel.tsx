@@ -150,7 +150,7 @@ const ThreeDCarousel = ({
                   animate={cardStyle}
                 >
                   <div
-                    className={`relative w-full h-[450px] sm:h-[550px] md:h-[80vh] max-h-[750px] rounded-[2rem] overflow-hidden border border-white/10 group
+                    className={`relative w-full h-[550px]  md:h-[80vh] max-h-[750px] rounded-[2rem] overflow-hidden border border-white/10 group
                       ${isActive ? "shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/20" : ""}
                     `}
                     onMouseEnter={() => setIsHovering(true)}
@@ -209,20 +209,6 @@ const ThreeDCarousel = ({
 
                       <div className="grid lg:grid-cols-[1.6fr_1fr] gap-6 md:gap-12 items-end">
                         <div className="space-y-4 md:space-y-8">
-                          <h2
-                            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tighter"
-                            style={{
-                              fontFamily: "var(--font-optft, sans-serif)",
-                            }}
-                          >
-                            {item.title}
-                            <span className="text-[#1E96C9]">.</span>
-                          </h2>
-
-                          <p className="text-sm sm:text-base md:text-xl text-gray-300/90 leading-relaxed max-w-2xl line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
-                            {item.description}
-                          </p>
-
                           <div className="flex flex-wrap items-center gap-2 md:gap-4 pt-1">
                             {item.tags.slice(0, 3).map((tag, i) => (
                               <span
@@ -238,7 +224,7 @@ const ThreeDCarousel = ({
                         <div className="flex flex-col items-start lg:items-end gap-4 md:gap-8">
                           <Link
                             href={item.link}
-                            className="group relative overflow-hidden rounded-2xl bg-white text-black px-6 md:px-10 py-3 md:py-5 font-bold text-sm md:text-xl hover:bg-[#1E96C9] hover:text-white transition-all duration-500 flex items-center gap-3 w-full sm:w-auto justify-center"
+                            className="group relative overflow-hidden rounded-2xl bg-white text-black px-6 py-3  font-semibold text-sm hover:bg-[#1E96C9] hover:text-white transition-all duration-500 flex items-center gap-3 w-full sm:w-auto justify-center"
                           >
                             <span className="relative z-10 transition-transform duration-500">
                               View Project
@@ -262,35 +248,33 @@ const ThreeDCarousel = ({
           </AnimatePresence>
         </div>
 
-        {!isMobile && (
-          <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-8 z-40 bg-black/40 backdrop-blur-2xl px-8 py-4 rounded-full border border-white/10 shadow-2xl">
-            <button
-              onClick={() =>
-                setActive((prev) => (prev - 1 + items.length) % items.length)
-              }
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
-            >
-              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:-translate-x-0.5" />
-            </button>
+        <div className="absolute md:bottom-6  bottom-10  left-1/2 -translate-x-1/2 flex items-center gap-8 z-40 bg-black/40 backdrop-blur-2xl px-4 py-2 rounded-full border border-white/10 shadow-2xl">
+          <button
+            onClick={() =>
+              setActive((prev) => (prev - 1 + items.length) % items.length)
+            }
+            className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
+          >
+            <ChevronLeft className="w-4 h-4 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:-translate-x-0.5" />
+          </button>
 
-            <div className="flex gap-3">
-              {items.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActive(idx)}
-                  className={`h-1.5 md:h-2 rounded-full transition-all duration-500 ${active === idx ? "w-8 md:w-12 bg-[#1E96C9]" : "w-1.5 md:w-2 bg-white/20 hover:bg-white/50"}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={() => setActive((prev) => (prev + 1) % items.length)}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
-            >
-              <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:translate-x-0.5" />
-            </button>
+          <div className="flex gap-3">
+            {items.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActive(idx)}
+                className={`h-1.5 md:h-2 rounded-full transition-all duration-500 ${active === idx ? "w-8 md:w-12 bg-[#1E96C9]" : "w-1.5 md:w-2 bg-white/20 hover:bg-white/50"}`}
+              />
+            ))}
           </div>
-        )}
+
+          <button
+            onClick={() => setActive((prev) => (prev + 1) % items.length)}
+            className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-300 group active:scale-95"
+          >
+            <ChevronRight className="w-4 h-4 md:w-8 md:h-8 text-white/70 group-hover:text-white group-hover:translate-x-0.5" />
+          </button>
+        </div>
       </div>
     </section>
   );

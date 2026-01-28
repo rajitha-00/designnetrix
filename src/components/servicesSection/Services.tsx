@@ -4,12 +4,13 @@ import { SERVISES } from "@/constanats/servises";
 import { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 import { Button } from "../Button";
+import { SectionTitle } from "../SectionTitle";
 
 export const Services = () => {
   const [selectedService, setSelectedService] = useState<
     (typeof SERVISES)[0] | null
   >(null);
-  
+
   return (
     <>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 relative z-10">
@@ -20,27 +21,21 @@ export const Services = () => {
             viewport={{ once: true }}
             className="inline-block"
           >
-            <h2
-              style={{ fontFamily: "var(--font-optft)" }}
-              className="text-4xl md:text-5xl text-white font-bold mb-4"
-            >
-              Core Services
-            </h2>
+            <SectionTitle title="" subtitle="OUR SERVICES" align="center" />
             <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-[#1E96C9] to-transparent mx-auto rounded-full" />
           </motion.div>
-          <motion.p 
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.1 }}
-             className="mt-4 text-gray-400 max-w-2xl mx-auto"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mt-4 text-gray-400 max-w-2xl mx-auto"
           >
             Comprehensive digital solutions tailored for your growth.
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 relative">
-          
           {SERVISES.map((service, index) => (
             <motion.div
               key={service.id}
@@ -52,7 +47,7 @@ export const Services = () => {
               onClick={() => setSelectedService(service)}
             >
               <div className="absolute inset-0 bg-[#1E96C9] rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-              
+
               <div className="relative h-full bg-[#0a0a0a]/80 backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:border-[#1E96C9]/30 transition-all duration-300 overflow-hidden cursor-pointer flex flex-col hover:-translate-y-1">
                 {/* Gradient Stain */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#1E96C9]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-[#1E96C9]/20 transition-colors" />
@@ -129,7 +124,7 @@ export const Services = () => {
                     <selectedService.icon className="w-3 h-3" />
                     Service Details
                   </div>
-                  
+
                   <h2
                     style={{ fontFamily: "var(--font-optft)" }}
                     className="text-3xl sm:text-5xl font-bold text-white mb-3"
@@ -144,18 +139,20 @@ export const Services = () => {
                 <div className="space-y-8 border-t border-white/5 pt-8">
                   <div>
                     <h3 className="text-lg text-white font-semibold mb-4">
-                       Overview
+                      Overview
                     </h3>
                     <p className="text-gray-300 leading-relaxed text-lg">
                       {selectedService.fullContent.headline}
                     </p>
                   </div>
-                  
+
                   <div className="grid gap-4">
                     {selectedService.fullContent.body.map((paragraph, i) => (
                       <div key={i} className="flex gap-4">
                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#1E96C9] flex-shrink-0" />
-                        <p className="text-gray-400 leading-relaxed">{paragraph}</p>
+                        <p className="text-gray-400 leading-relaxed">
+                          {paragraph}
+                        </p>
                       </div>
                     ))}
                   </div>

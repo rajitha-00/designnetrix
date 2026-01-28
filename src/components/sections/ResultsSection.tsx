@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { CountUp } from "@/components/lightswind/count-up";
 import { Separator } from "@/components/lightswind/separator";
 import { motion } from "framer-motion";
+import { SectionTitle } from "../SectionTitle";
 
 export default function ResultsSection() {
   const containerVariants = {
@@ -42,13 +43,7 @@ export default function ResultsSection() {
           >
             RESULTS
           </p>
-          <h2
-            style={{ fontFamily: "var(--font-optft)" }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
-          >
-            THE NUMBERS SPEAK FOR{" "}
-            <span className="block text-glow">THEMSELVES</span>
-          </h2>
+          <SectionTitle title="THE NUMBERS SPEAK FOR" subtitle="THEMSELVES" />
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl"

@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LightRays from "../Rays"; // Adjust path if needed
+import { HeroTitel } from "../HeroTitel";
 
 export const AboutHero = () => {
   return (
@@ -24,9 +25,9 @@ export const AboutHero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-7xl mx-auto">
         <motion.div
-           initial={{ opacity: 0, y: 30 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 1, delay: 0.2 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
           <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
             <span className="text-[#1E96C9] text-sm font-medium tracking-[0.2em] uppercase">
@@ -34,29 +35,15 @@ export const AboutHero = () => {
             </span>
           </div>
         </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4, type: "spring" }}
-          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tighter"
-          style={{ fontFamily: "var(--font-optft)" }}
-        >
-          Architects of
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 relative z-20">
-            Digital Reality
-          </span>
-        </motion.h1>
-
+        <HeroTitel title="Architects of" subtitle="Digital Reality" />
         <motion.p
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ duration: 1, delay: 0.8 }}
-           className="mt-8 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-8 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
         >
-          We are the bridge between imagination and execution. 
-          Designing the future, one pixel at a time.
+          We are the bridge between imagination and execution. Designing the
+          future, one pixel at a time.
         </motion.p>
       </div>
 
@@ -67,7 +54,9 @@ export const AboutHero = () => {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-white/30 uppercase tracking-widest">Scroll</span>
+        <span className="text-xs text-white/30 uppercase tracking-widest">
+          Scroll
+        </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
       </motion.div>
     </section>

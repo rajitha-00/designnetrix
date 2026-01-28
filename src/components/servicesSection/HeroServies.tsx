@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Globe from "../lightswind/globe";
 import { Eye, Zap } from "lucide-react";
 import { Button } from "../Button";
+import { HeroTitel } from "../HeroTitel";
 
 export const HeroServies = () => {
   return (
@@ -48,20 +49,7 @@ export const HeroServies = () => {
             >
               Our Capabilities
             </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4, type: "spring" }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight tracking-tighter"
-              style={{ fontFamily: "var(--font-optft)" }}
-            >
-              Future
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 relative z-20">
-                Engineering
-              </span>
-            </motion.h1>
+            <HeroTitel title="Future" subtitle="Engineering" />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

@@ -3,6 +3,8 @@ import { useRef } from "react";
 import { Button } from "../Button";
 import { motion } from "framer-motion";
 import ThreeDHoverGallery from "../lightswind/3d-hover-gallery";
+import { SectionBadge } from "../SectionBadge";
+import { SectionTitle } from "../SectionTitle";
 
 // Example placeholder images (should be replaced with actual project/office shots)
 const GALLERY_IMAGES = [
@@ -15,7 +17,7 @@ const GALLERY_IMAGES = [
 
 export const CTAService = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   return (
     <section ref={containerRef} className="relative z-10 py-32 overflow-hidden">
       {/* Background Ambience */}
@@ -45,20 +47,8 @@ export const CTAService = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-block px-4 py-1.5 rounded-full border border-[#1E96C9]/30 bg-[#1E96C9]/10 text-[#1E96C9] text-sm font-medium tracking-widest uppercase mb-8">
-                Let&apos;s Work Together
-              </div>
-
-              <h2
-                className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[0.9]"
-                style={{ fontFamily: "var(--font-optft)" }}
-              >
-                Ready to{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#1E96C9] to-[#1E96C9]">
-                  Scale?
-                </span>
-              </h2>
-
+              <SectionBadge title="Let's Work Together" />
+              <SectionTitle subtitle="Ready to Scale?" align="left" />
               <p className="text-xl text-gray-400 mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Turn your vision into a digital masterpiece. We build brands and
                 products that define industries.

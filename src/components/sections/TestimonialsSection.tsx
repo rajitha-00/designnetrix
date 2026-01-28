@@ -4,6 +4,7 @@ import type { ThreeDCarouselItem } from "@/components/lightswind/3d-carousel";
 import { ThreeDScrollTriggerContainer, ThreeDScrollTriggerRow } from "../lightswind/3d-scroll-trigger";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { SectionTitle } from "../SectionTitle";
 
 const testimonialsData: ThreeDCarouselItem[] = [
   {
@@ -81,15 +82,11 @@ export default function TestimonialsSection() {
           >
             TESTIMONIALS
           </p>
-          <h2
-            style={{ fontFamily: "var(--font-optft)" }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
-          >
-            TRUSTED BY LEADING{" "}
-            <span className="block">
-              <span className="text-[#1E96C9] text-glow-blue">INNOVATORS</span>
-            </span>
-          </h2>
+          <SectionTitle   
+            title="TRUSTED BY LEADING"
+            subtitle="INNOVATORS"
+            align="center"
+          />    
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto"

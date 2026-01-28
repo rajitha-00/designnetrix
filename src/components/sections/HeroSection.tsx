@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { motion } from "framer-motion";
+import { HeroTitel } from "../HeroTitel";
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -22,19 +23,11 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           Beyond Conventional Design.
         </p>
       </motion.div>
-      <motion.h1
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.4, type: "spring" }}
-        className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter"
-        style={{ fontFamily: "var(--font-optft)" }}
-      >
-        Human Creativity Meets
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#1E96C9] via-white to-[#1E96C9]/20 relative z-20">
-          Artificial Intelligence
-        </span>
-      </motion.h1>
+
+      <HeroTitel
+        title="Human Creativity Meets"
+        subtitle="Artificial Intelligence"
+      />
       {/* Sub-headline - Enhanced for mobile */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -47,7 +40,6 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         custom AI consultation, and cinematic digital marketing. We build the
         systems that define tomorrow.
       </motion.p>
-
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}

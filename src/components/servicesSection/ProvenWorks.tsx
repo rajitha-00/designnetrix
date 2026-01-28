@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import ThreeDCarousel from "../lightswind/3d-carousel";
 import { PROJECTS_SHOWCASE } from "@/constanats/clients";
+import { SectionTitle } from "../SectionTitle";
 export const ProvenWorks = () => {
   return (
     <section className="relative z-10 mb-32 w-full overflow-visible">
@@ -17,18 +18,7 @@ export const ProvenWorks = () => {
         >
           Portfolio Showcase
         </motion.p>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          style={{ fontFamily: "var(--font-optft)" }}
-          className="text-4xl md:text-5xl font-bold tracking-tight mb-3 relative z-10 bg-gradient-to-r from-white via-gray-200 to-gray-500 bg-clip-text text-transparent"
-        >
-          Proven Works
-        </motion.h2>
-
+        <SectionTitle subtitle="PROVEN WORKS" align="center" />
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}

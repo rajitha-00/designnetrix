@@ -4,6 +4,7 @@ import { BentoGrid } from "@/components/lightswind/bento-grid";
 import { Globe, Smartphone, ShoppingCart, Briefcase, Laptop, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { SectionTitle } from "../SectionTitle";
 
 const recentWorks = [
   {
@@ -113,12 +114,7 @@ export default function RecentWorksSection() {
         >
           PORTFOLIO
         </p>
-        <h2
-          style={{ fontFamily: "var(--font-optft)" }}
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6"
-        >
-          RECENT <span className="text-[#1E96C9] text-glow-blue">WORKS</span>
-        </h2>
+        <SectionTitle title="RECENT WORKS" align="center" />
         <p
           style={{ fontFamily: "var(--font-sansbld)" }}
           className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto"

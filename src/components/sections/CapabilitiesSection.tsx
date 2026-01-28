@@ -12,6 +12,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { SectionTitle } from "../SectionTitle";
 
 const capabilitiesData: ChainItem[] = [
   {
@@ -83,15 +84,11 @@ export default function CapabilitiesSection() {
           >
             CAPABILITIES
           </p>
-          <h2
-            style={{ fontFamily: "var(--font-optft)" }}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6"
-          >
-            EVERYTHING YOU NEED{" "}
-            <span className="block">
-              TO <span className="text-[#1E96C9] text-glow-blue">COMPETE</span>
-            </span>
-          </h2>
+          <SectionTitle
+            title="EVERYTHING YOU NEED"
+            subtitle="TO COMPETE"
+            align="center"
+          />
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto mb-8"

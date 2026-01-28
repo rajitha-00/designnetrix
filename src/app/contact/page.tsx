@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, MessageCircle, Github, Twitter, Linkedin, Instagram } from "lucide-react";
 import { Button } from "@/components/Button";
+import { HeroTitel } from "@/components/HeroTitel";
 
 const ContactPage = () => {
   const [formState, setFormState] = useState({
@@ -72,16 +73,7 @@ const ContactPage = () => {
             >
               Get In Touch
             </motion.h4>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
-              style={{ fontFamily: "var(--font-optft)" }}
-            >
-              Let&apos;s craft your <br />
-              <span className="text-white/40">digital future.</span>
-            </motion.h1>
+            <HeroTitel title="Let's craft your" subtitle="digital future." />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
