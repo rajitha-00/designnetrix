@@ -24,10 +24,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </p>
       </motion.div>
 
-      <HeroTitel
-        title="Human Creativity Meets"
-        subtitle="Artificial Intelligence"
-      />
+      <HeroTitel title="Built for What Comes" subtitle="After Digital" />
       {/* Sub-headline - Enhanced for mobile */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -36,9 +33,10 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         style={{ fontFamily: "var(--font-sansbld)" }}
         className="max-w-4xl mb-10 sm:mb-12 text-sm sm:text-base lg:text-xl text-gray-300 font-medium px-2 sm:px-0 leading-relaxed mt-10"
       >
-        DesignNetrix transforms businesses with cutting-edge web development,
-        custom AI consultation, and cinematic digital marketing. We build the
-        systems that define tomorrow.
+        Websites and campaigns are only the surface. Real value comes from
+        systems that think, adapt, and support how a business actually runs.
+        DesignNetrix builds intelligent platforms, custom software, and creative
+        systems that move businesses forward.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}

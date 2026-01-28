@@ -10,6 +10,8 @@ import ResultsSection from "@/components/sections/ResultsSection";
 import AdvantagesSection from "@/components/sections/AdvantagesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import RecentWorksSection from "@/components/sections/RecentWorksSection";
+import { AboutDNX } from "@/components/sections/AboutDNX";
+import { FinalCta } from "@/components/sections/FinalCta";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,7 +62,6 @@ export default function Home() {
           <div className="liquid-ether-fallback w-full h-full" />
         )}
       </div>
-
       <div className="fixed inset-0 -z-20 mix-blend-screen pointer-events-none">
         <LightRays
           raysOrigin="top-center"
@@ -89,14 +90,15 @@ export default function Home() {
         {/* Highlight for Footer Area */}
         <div className="absolute bottom-0 w-full h-[600px] bg-indigo-900/20 blur-[100px]" />
       </div>
-
       {/* Hero Content */}
       <HeroSection onOpenModal={openModal} />
       <ResultsSection />
-      <RecentWorksSection />
+      <AboutDNX />
       <CapabilitiesSection />
       <AdvantagesSection />
+      <RecentWorksSection />
       <TestimonialsSection />
+      <FinalCta />
       {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
     </div>

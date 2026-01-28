@@ -27,7 +27,7 @@ export default function ResultsSection() {
   };
 
   return (
-    <section className="relative z-10 py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -43,7 +43,7 @@ export default function ResultsSection() {
           >
             RESULTS
           </p>
-          <SectionTitle title="THE NUMBERS SPEAK FOR" subtitle="THEMSELVES" />
+          <SectionTitle title="Proven Results" subtitle="Across Markets" />
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl"
@@ -82,7 +82,7 @@ export default function ResultsSection() {
                   style={{ fontFamily: "var(--font-sansbld)" }}
                   className="text-sm lg:text-base font-semibold tracking-wider text-white/90 uppercase"
                 >
-                  Projects Launched
+                  successful launches across <br /> Sri Lanka, UK, and Australia
                 </p>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function ResultsSection() {
                   style={{ fontFamily: "var(--font-sansbld)" }}
                   className="text-sm lg:text-base font-semibold tracking-wider text-white/90 uppercase"
                 >
-                  Average Time-to-Launch
+                  Average Time-to-Launch <br /> from 0 to 100%
                 </p>
               </div>
             </div>

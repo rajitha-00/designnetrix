@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import { SectionTitle } from "../SectionTitle";
 
 export const OurStory = () => {
   return (
@@ -16,13 +17,11 @@ export const OurStory = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2
-                className="text-5xl font-bold text-white mb-6"
-                style={{ fontFamily: "var(--font-optft)" }}
-              >
-                The <span className="text-[#1E96C9]">DNA</span> of <br />
-                DesignNetrix
-              </h2>
+              <SectionTitle
+                title="The DNA of"
+                subtitle="DesignNetrix"
+                align="left"
+              />
               <div className="w-20 h-1 bg-[#1E96C9] rounded-full mb-8" />
             </motion.div>
 

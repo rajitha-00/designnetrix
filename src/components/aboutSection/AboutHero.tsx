@@ -49,15 +49,13 @@ export const AboutHero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-10"
       >
-        <span className="text-xs text-white/30 uppercase tracking-widest">
-          Scroll
-        </span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0" />
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-2">
+          <div className="w-1 h-3 bg-[#1E96C9] rounded-full" />
+        </div>
       </motion.div>
     </section>
   );

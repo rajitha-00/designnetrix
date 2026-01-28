@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import { SectionTitle } from "../SectionTitle";
 
 export const VideoVault = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,12 +18,7 @@ export const VideoVault = () => {
   return (
     <section ref={containerRef} className="py-24 bg-[#020202] overflow-hidden">
       <div className="container mx-auto px-6 mb-12">
-        <h2
-          className="text-4xl md:text-5xl font-bold text-white mb-2"
-          style={{ fontFamily: "var(--font-optft)" }}
-        >
-          Cinema Vault
-        </h2>
+        <SectionTitle subtitle="CINEMA VAULT" align="left" />
         <p className="text-gray-400">Motion that moves people.</p>
       </div>
 

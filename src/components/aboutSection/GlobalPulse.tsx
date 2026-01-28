@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
+import { SectionTitle } from "../SectionTitle";
 
 const LOCATIONS = [
   { city: "New York", time: "EST (UTC-5)", active: true },
@@ -18,10 +19,10 @@ export const GlobalPulse = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-optft)" }}>
-            Global Pulse
-          </h2>
-          <p className="text-gray-400">Always On. Creating across time zones.</p>
+          <SectionTitle subtitle="Global Pulse" align="center" />
+          <p className="text-gray-400">
+            Always On. Creating across time zones.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -42,23 +43,30 @@ export const GlobalPulse = () => {
                 <Globe className="w-8 h-8" />
               </div>
 
-              <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#1E96C9] transition-colors">{loc.city}</h3>
-              <p className="text-sm text-gray-400 font-mono tracking-wide">{loc.time}</p>
+              <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#1E96C9] transition-colors">
+                {loc.city}
+              </h3>
+              <p className="text-sm text-gray-400 font-mono tracking-wide">
+                {loc.time}
+              </p>
             </motion.div>
           ))}
         </div>
 
         <div className="mt-20 relative p-8 md:p-12 rounded-3xl bg-gradient-to-r from-[#1E96C9]/10 to-purple-500/10 border border-white/10 overflow-hidden text-center">
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-4">Remote First, Quality Obsessed.</h3>
-                <p className="max-w-2xl mx-auto text-gray-300 mb-8">
-                    We hire the top 1% of talent from around the globe, ensuring your project gets the best minds, regardless of geography.
-                </p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1E96C9]/20 text-[#1E96C9] text-sm font-bold border border-[#1E96C9]/30">
-                    <div className="w-2 h-2 bg-[#1E96C9] rounded-full animate-ping" />
-                    Available for New Projects
-                </div>
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Remote First, Quality Obsessed.
+            </h3>
+            <p className="max-w-2xl mx-auto text-gray-300 mb-8">
+              We hire the top 1% of talent from around the globe, ensuring your
+              project gets the best minds, regardless of geography.
+            </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1E96C9]/20 text-[#1E96C9] text-sm font-bold border border-[#1E96C9]/30">
+              <div className="w-2 h-2 bg-[#1E96C9] rounded-full animate-ping" />
+              Available for New Projects
             </div>
+          </div>
         </div>
       </div>
     </section>

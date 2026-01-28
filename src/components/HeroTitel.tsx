@@ -9,18 +9,25 @@ interface IHeroTitle {
 export const HeroTitel = (props: IHeroTitle) => {
   const { title, subtitle} = props;
   return (
-    <motion.h1
-      initial={{ opacity: 0, scale: 0.9 }}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, delay: 0.4, type: "spring" }}
-      className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tighter"
-      style={{ fontFamily: "var(--font-optft)" }}
+      transition={{ duration: 0.8, ease: "circOut" }}
+      className="relative inline-block"
     >
-      {title}
-      <br />
-      <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#1E96C9] via-white to-[#1E96C9]/20 relative z-20">
+      {" "}
+      <div className="absolute inset-0 bg-[#1E96C9] blur-[100px] opacity-20" />
+      <motion.h1
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.4, type: "spring" }}
+        className="text-5xl  md:text-8xl leading-[1.3] font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-600 tracking-normal"
+        style={{ fontFamily: "var(--font-optft)" }}
+      >
+        {title}
+        <br />
         {subtitle}
-      </span>
-    </motion.h1>
+      </motion.h1>
+    </motion.div>
   );
 };

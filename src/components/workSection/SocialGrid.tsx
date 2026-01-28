@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Twitter, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { SectionTitle } from "../SectionTitle";
 
 const SOCIAL_POSTS = [
   {
@@ -60,12 +61,7 @@ export const SocialGrid = () => {
     <section className="py-32 bg-black relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-optft)" }}
-          >
-            The Social Pulse
-          </h2>
+          <SectionTitle subtitle="THE SOCIAL PULSE" align="center" />
           <p className="text-gray-400">
             Join the conversation. We share value, not just visuals.
           </p>

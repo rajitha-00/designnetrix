@@ -82,11 +82,11 @@ export default function TestimonialsSection() {
           >
             TESTIMONIALS
           </p>
-          <SectionTitle   
+          <SectionTitle
             title="TRUSTED BY LEADING"
-            subtitle="INNOVATORS"
+            subtitle="Growing Businesses"
             align="center"
-          />    
+          />
           <p
             style={{ fontFamily: "var(--font-sansbld)" }}
             className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto"

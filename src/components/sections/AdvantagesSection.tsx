@@ -42,8 +42,8 @@ export default function AdvantagesSection() {
             ADVANTAGES
           </p>
           <SectionTitle
-            title="THE DEFINITIVE"
-            subtitle="COMPETITIVE EDGE"
+            title="Built From Zero."
+            subtitle="Scaled to Value."
             align="left"
           />
           <p
@@ -141,8 +141,8 @@ export default function AdvantagesSection() {
                     style={{ fontFamily: "var(--font-sansbld)" }}
                     className="text-gray-300 text-sm lg:text-base leading-relaxed"
                   >
-                    Deploy enterprise-grade technology—from high-end Next.js
-                    platforms to custom AI agents—tailored for massive growth.
+                    Deploy enterprise-grade technology from high-end Next.js
+                    platforms to custom AI agents tailored for massive growth.
                   </p>
                 </div>
               </div>

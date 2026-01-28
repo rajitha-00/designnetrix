@@ -119,8 +119,10 @@ export default function RecentWorksSection() {
           style={{ fontFamily: "var(--font-sansbld)" }}
           className="text-gray-200 text-base lg:text-lg leading-relaxed max-w-3xl mx-auto"
         >
-          Explore our latest projects that showcase innovation, design
-          excellence, and measurable results.
+          A selection of websites, applications, and systems built for
+          businesses across different industries. A selection of websites,
+          applications, and systems built for businesses across different
+          industries.
         </p>
       </motion.div>
 

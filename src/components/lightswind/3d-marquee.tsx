@@ -42,7 +42,7 @@ export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
   return (
     <section
       className={`mx-auto block h-[600px] max-sm:h-[400px] 
-        overflow-hidden rounded-2xl bg-white dark:bg-black ${className}`}
+        overflow-hidden rounded-2xl bg-transparent ${className}`}
     >
       <div
         className="flex w-full h-full items-center justify-center"
