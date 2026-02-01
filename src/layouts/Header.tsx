@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import HamburgerMenuOverlay from "@/components/lightswind/hamburger-menu-overlay";
-import { LayoutGrid, Briefcase, User, Mail } from "lucide-react";
+import { LayoutGrid, Briefcase, User, Mail, Home } from "lucide-react";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,6 +21,11 @@ export default function Header() {
   }, []);
 
   const menuItems = [
+    {
+      label: "Home",
+      href: "/",
+      icon: <Home className="w-6 h-6" />,
+    },
     {
       label: "Services",
       href: "/services",
@@ -56,19 +63,39 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Navigation Links - Desktop */}
         <div className="hidden md:flex items-center space-x-10">
-          {["Services", "Work", "About", "Contact"].map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="text-base font-medium text-white/70 hover:text-white transition-all duration-300 hover:tracking-wider relative group"
-              style={{ fontFamily: "var(--font-sansbld)" }}
-            >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#1E96C9] transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+          {["Home", "Services", "Work", "About", "Contact"].map((item) => {
+            const href = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            const isActive = pathname === href;
+
+            return (
+              <Link
+                key={item}
+                href={href}
+                className={`text-base font-medium transition-all duration-300 relative group flex items-center gap-2
+                  ${
+                    isActive
+                      ? "text-white tracking-wide"
+                      : "text-white/70 hover:text-white hover:tracking-wider"
+                  }`}
+                style={{ fontFamily: "var(--font-sansbld)" }}
+              >
+                {/* Active Indicator Dot */}
+                {isActive && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#1E96C9] shadow-[0_0_8px_#1E96C9] animate-pulse" />
+                )}
+
+                {item}
+
+                {/* Underline */}
+                <span
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-[#1E96C9] to-[#60a5fa] transition-all duration-300
+                    ${isActive ? "w-full shadow-[0_0_8px_rgba(30,150,201,0.5)]" : "w-0 group-hover:w-full"}
+                  `}
+                />
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile Menu - HamburgerMenuOverlay */}

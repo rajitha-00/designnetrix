@@ -20,7 +20,7 @@ export interface ThreeDMarqueeProps {
 export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
   images,
   className = "",
-  cols = 4,
+  cols = 5,
   onImageClick,
 }) => {
   // Clone the image list twice
@@ -28,7 +28,7 @@ export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
 
   const groupSize = Math.ceil(duplicatedImages.length / cols);
   const imageGroups = Array.from({ length: cols }, (_, index) =>
-    duplicatedImages.slice(index * groupSize, (index + 1) * groupSize)
+    duplicatedImages.slice(index * groupSize, (index + 1) * groupSize),
   );
 
   const handleImageClick = (image: MarqueeImage, globalIndex: number) => {
@@ -82,7 +82,7 @@ export const ThreeDMarquee: React.FC<ThreeDMarqueeProps> = ({
                         alt={image.alt}
                         width={970}
                         height={700}
-                        className={`aspect-[970/700] w-full max-w-[200px] rounded-lg object-cover ring ring-gray-300/30 dark:ring-gray-800/50 shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
+                        className={` w-full max-w-[200px] rounded-lg object-cover ring ring-gray-300/30 dark:ring-gray-800/50 shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
                           isClickable ? "cursor-pointer" : ""
                         }`}
                         onClick={() => handleImageClick(image, globalIndex)}

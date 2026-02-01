@@ -73,7 +73,7 @@ export const HeroServies = () => {
           >
             {[
               { label: "Countries", value: "3+" },
-              { label: "Clients", value: "10+" },
+              { label: "Clients", value: "7+" },
               { label: "Projects", value: "15+" },
             ].map((stat, index) => (
               <motion.div

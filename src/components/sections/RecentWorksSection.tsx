@@ -14,10 +14,10 @@ const recentWorks = [
       "Modern shopping experience with seamless checkout and inventory management",
     background: (
       <Image
-        src="/projects/EatfitWeb.png"
+        src="/projects/EatFit.png"
         alt="E-Commerce Platform"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
       />
     ),
     className: "md:col-span-2",
@@ -28,10 +28,10 @@ const recentWorks = [
     description: "Secure financial transactions with intuitive user interface",
     background: (
       <Image
-        src="/projects/RhCleaningWeb.png"
+        src="/projects/SkyGardenPos.png"
         alt="Mobile Banking App"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
     className: "md:col-span-1",
@@ -43,10 +43,10 @@ const recentWorks = [
       "Real-time analytics and inventory tracking for retail businesses",
     background: (
       <Image
-        src="/projects/EatfitWeb.png"
+        src="/projects/EatFitPos.png"
         alt="Retail Dashboard"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
     className: "md:col-span-1",
@@ -58,10 +58,10 @@ const recentWorks = [
       "Professional business presence with modern design and SEO optimization",
     background: (
       <Image
-        src="/projects/XiangYunWeb.png"
+        src="/projects/XiangYun.png"
         alt="Corporate Website"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
     className: "md:col-span-2",
@@ -73,10 +73,10 @@ const recentWorks = [
       "Cloud-based solution with subscription management and team collaboration",
     background: (
       <Image
-        src="/projects/RhCleaningWeb.png"
+        src="/projects/RhCleaning.png"
         alt="SaaS Platform"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
     className: "md:col-span-2",
@@ -88,10 +88,10 @@ const recentWorks = [
       "Complete reservation management with calendar integration and payments",
     background: (
       <Image
-        src="/projects/XiangYunWeb.png"
+        src="/projects/RealmInteriors.png"
         alt="Booking System"
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-40"
+        className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
       />
     ),
     className: "md:col-span-1",

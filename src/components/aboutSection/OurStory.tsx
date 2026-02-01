@@ -71,9 +71,8 @@ export const OurStory = () => {
               <div className="mt-8 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1E96C9] to-purple-600" />
                 <div>
-                  <div className="text-white font-bold">Founder Name</div>
                   <div className="text-[#1E96C9] text-sm tracking-widest uppercase">
-                    CEO & Chief Architect
+                    Founder
                   </div>
                 </div>
               </div>

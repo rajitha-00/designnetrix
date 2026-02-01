@@ -1,106 +1,119 @@
-"use client";
+import { Metadata } from "next";
+import HomeClient from "@/components/HomeClient";
 
-import { useState, useEffect } from "react";
-import LiquidEther from "@/components/LiquidEther";
-import LightRays from "@/components/Rays";
-import ContactModal from "@/components/ContactModal";
-import HeroSection from "@/components/sections/HeroSection";
-import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
-import ResultsSection from "@/components/sections/ResultsSection";
-import AdvantagesSection from "@/components/sections/AdvantagesSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import RecentWorksSection from "@/components/sections/RecentWorksSection";
-import { AboutDNX } from "@/components/sections/AboutDNX";
-import { FinalCta } from "@/components/sections/FinalCta";
+export const metadata: Metadata = {
+  title: "DesignNetrix | AI Automation, Web Engineering & Premium Branding",
+  description:
+    "DesignNetrix is a premium AI & Digital Agency building the future of business. We specialize in Custom AI Agents, High-Performance Web Apps, and Strategic Branding.",
+  keywords: [
+    "DesignNetrix",
+    "AI Agency",
+    "AI Automation",
+    "Custom AI Agents",
+    "Web Engineering",
+    "Premium Web Design",
+    "Next.js Developers",
+    "Digital Transformation",
+    "Software Development Company",
+  ],
+  openGraph: {
+    title: "DesignNetrix | Future Engineering",
+    description:
+      "We build intelligent digital ecosystems. From autonomous AI agents to immersive web experiences.",
+    url: "https://designnetrix.com",
+    siteName: "DesignNetrix",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://designnetrix.com/og-image.png", // Assuming you have a general OG image or will add one
+        width: 1200,
+        height: 630,
+        alt: "DesignNetrix - Future Engineering",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DesignNetrix - AI & Digital Engineering",
+    description: "Building the future with AI and premium web technologies.",
+  },
+  alternates: {
+    canonical: "https://designnetrix.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(
-        window.innerWidth < 768 ||
-          /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
-          )
-      );
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://designnetrix.com/#website",
+        url: "https://designnetrix.com",
+        name: "DesignNetrix",
+        description: "Premium AI & Digital Engineering Agency",
+        publisher: { "@id": "https://designnetrix.com/#organization" },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://designnetrix.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "ProfessionalService", // or Organization / Corporation
+        "@id": "https://designnetrix.com/#organization",
+        name: "DesignNetrix",
+        url: "https://designnetrix.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://designnetrix.com/logo_white.png",
+          width: 250,
+          height: 40,
+        },
+        image: "https://designnetrix.com/og-image.png",
+        description:
+          "DesignNetrix is a cutting-edge digital agency specializing in AI automation, custom software engineering, and premium brand identity.",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "LK", // Assuming Sri Lanka based on previous context (EatFit.lk), update if needed
+          addressLocality: "Colombo", // Placeholder, update if known
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          areaServed: "World",
+          availableLanguage: ["English"],
+        },
+        sameAs: [
+          "https://www.linkedin.com/company/designnetrix",
+          "https://twitter.com/designnetrix",
+          "https://www.instagram.com/designnetrix",
+          // Add other social links here
+        ],
+        priceRange: "$$$",
+      },
+    ],
+  };
 
   return (
-    <div className="relative w-full min-h-screen ">
-      {/* Continuous Background Layer - Fixed */}
-      <div className="fixed inset-0 -z-30">
-        {!isMobile ? (
-          <LiquidEther
-            colors={["#1D4486", "#1E96C9", "#ffffff"]}
-            mouseForce={10}
-            cursorSize={50}
-            isViscous={false}
-            viscous={20}
-            iterationsViscous={16}
-            iterationsPoisson={16}
-            resolution={0.3}
-            isBounce={false}
-            autoDemo={true}
-            autoSpeed={0.3}
-            autoIntensity={1.5}
-            takeoverDuration={0.25}
-            autoResumeDelay={4000}
-            autoRampDuration={0.8}
-          />
-        ) : (
-          <div className="liquid-ether-fallback w-full h-full" />
-        )}
-      </div>
-      <div className="fixed inset-0 -z-20 mix-blend-screen pointer-events-none">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#00ffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={3}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="custom-rays"
-        />
-      </div>
-      {/* Global Background Ambiance - Scrolling Highlights */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        {/* Highlight for Results Section */}
-        <div className="absolute top-[800px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#1E96C9]/15 rounded-full blur-[100px] mix-blend-screen" />
-
-        {/* Highlight for Recent Works */}
-        <div className="absolute top-[1600px] right-0 translate-x-1/3 w-[900px] h-[900px] bg-purple-600/10 rounded-full blur-[120px] mix-blend-screen" />
-
-        {/* Highlight for Capabilities/Advantages */}
-        <div className="absolute top-[2800px] left-0 -translate-x-1/3 w-[1000px] h-[1000px] bg-[#1E96C9]/10 rounded-full blur-[120px] mix-blend-screen" />
-
-        {/* Highlight for Footer Area */}
-        <div className="absolute bottom-0 w-full h-[600px] bg-indigo-900/20 blur-[100px]" />
-      </div>
-      {/* Hero Content */}
-      <HeroSection onOpenModal={openModal} />
-      <ResultsSection />
-      <AboutDNX />
-      <CapabilitiesSection />
-      <AdvantagesSection />
-      <RecentWorksSection />
-      <TestimonialsSection />
-      <FinalCta />
-      {/* Contact Modal */}
-      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomeClient />
+    </>
   );
 }

@@ -6,10 +6,49 @@ import { ThreeDMarquee } from "../lightswind/3d-marquee";
 import { SectionBadge } from "../SectionBadge";
 import { SectionTitle } from "../SectionTitle";
 
-const CLIENT_LOGOS = Array(7).fill({
-  src: "/logo_white.png",
-  alt: "DesignNetrix Client",
-});
+const CLIENT_LOGOS = [
+  {
+    src: "/clients/eatfit.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/realm.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/rhc.png",
+    alt: "DesignNetrix Client",
+  },
+
+  {
+    src: "/clients/skygarden.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/xiangyun.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/rhc.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/xiangyun.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/eatfit.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/realm.png",
+    alt: "DesignNetrix Client",
+  },
+  {
+    src: "/clients/skygarden.png",
+    alt: "DesignNetrix Client",
+  },
+];
 
 export const CTAService = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,7 +101,7 @@ export const CTAService = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative "
           >
-            <ThreeDMarquee images={CLIENT_LOGOS} />
+            <ThreeDMarquee images={CLIENT_LOGOS} cols={5} />
           </motion.div>
         </div>
       </div>

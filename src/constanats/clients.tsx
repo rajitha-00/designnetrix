@@ -7,7 +7,7 @@ export const PROJECTS_SHOWCASE = [
     description:
       "Modern corporate website for a premier cleaning service in Australia.",
     tags: ["Branding", "Web Design", "SEO"],
-    imageUrl: "/projects/RhCleaningWeb.png",
+    imageUrl: "/projects/RHCleaning.png",
     link: "https://www.rhcleaning.com.au/",
   },
   {
@@ -17,7 +17,7 @@ export const PROJECTS_SHOWCASE = [
     description:
       "Real-time data visualization dashboard for enterprise analytics.",
     tags: ["React", "D3.js", "TypeScript"],
-    imageUrl: "/projects/XiangYunWeb.png",
+    imageUrl: "/projects/XiangYun.png",
     link: "https://www.xiangyunchineserestaurant.com/",
   },
   {
@@ -26,7 +26,7 @@ export const PROJECTS_SHOWCASE = [
     brand: "Health & Wellness",
     description: "A comprehensive diet planning and food delivery platform.",
     tags: ["Next.js", "E-commerce", "Health"],
-    imageUrl: "/projects/EatfitWeb.png",
+    imageUrl: "/projects/Eatfit.png",
     link: "https://www.eatfit.lk/",
   },
   {
@@ -35,7 +35,7 @@ export const PROJECTS_SHOWCASE = [
     brand: "Architecture",
     description: "Minimalist portfolio for an interior design firm.",
     tags: ["Portfolio", "Animation", "Minimalism"],
-    imageUrl: "/projects/RealmWeb.png",
+    imageUrl: "/projects/RealmInteriors.png",
     link: "https://www.realminteriors.lk/",
   },
   {

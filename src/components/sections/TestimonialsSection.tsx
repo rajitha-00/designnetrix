@@ -10,56 +10,53 @@ const testimonialsData: ThreeDCarouselItem[] = [
   {
     id: 1,
     title: "Transformed Our Digital Presence",
-    brand: "TechCorp Solutions",
+    brand: "RH Cleaning - Melbourne",
     description:
       "DesignNetrix delivered a stunning Next.js platform that increased our conversion rate by 47%. Their attention to performance and user experience is unmatched. The team understood our vision and brought it to life ahead of schedule.",
     tags: ["Next.js", "Performance", "UX Design"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop",
+    imageUrl: "/clients/rhc.png",
+
     link: "#",
   },
   {
     id: 2,
     title: "Best Development Partner We've Had",
-    brand: "Nexus Ventures",
+    brand: "RealmInteriors - Kandy",
     description:
       "Working with DesignNetrix was seamless from start to finish. They took our complex requirements and created a scalable, beautiful solution. Our time-to-market was cut in half, and the results speak for themselves.",
     tags: ["Web Development", "Scalability", "Fast Delivery"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop",
+    imageUrl: "/clients/realm.png",
+
     link: "#",
   },
   {
     id: 3,
     title: "Exceeded Every Expectation",
-    brand: "Innovate Labs",
+    brand: "Xiang Yun Chinese Restaurant - Kandy",
     description:
       "The team at DesignNetrix brought expertise we couldn't build in-house. They modernized our entire platform with cutting-edge technology and design that positions us as industry leaders. Absolutely worth every penny.",
     tags: ["Modernization", "Innovation", "Design Excellence"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop",
+    imageUrl: "/clients/xiangyun.png",
     link: "#",
   },
   {
     id: 4,
     title: "Game-Changing Results",
-    brand: "Apex Digital",
+    brand: "Sky Garden Hotel- Kandy",
     description:
       "Our engagement metrics tripled after launch. DesignNetrix didn't just build a website—they engineered a growth engine. Their strategic approach to UX and conversion optimization has been transformative for our business.",
     tags: ["Growth", "Conversion", "Strategy"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop",
+    imageUrl: "/clients/skygarden.png",
     link: "#",
   },
   {
     id: 5,
     title: "Professional Excellence at Every Stage",
-    brand: "Vertex Consulting",
+    brand: "Eat Fit - Colombo",
     description:
       "From discovery to deployment, DesignNetrix demonstrated professionalism and technical mastery. They solved problems we didn't even know we had. Our clients constantly compliment the new platform.",
     tags: ["Professional", "Technical Mastery", "Client Satisfaction"],
-    imageUrl:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
+    imageUrl: "/clients/eatfit.png",
     link: "#",
   },
 ];
@@ -117,7 +114,7 @@ export default function TestimonialsSection() {
                             alt={testimonial.brand}
                             width={56}
                             height={56}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -177,7 +174,7 @@ export default function TestimonialsSection() {
                             alt={testimonial.brand}
                             width={56}
                             height={56}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                         <div className="flex-1 min-w-0">
