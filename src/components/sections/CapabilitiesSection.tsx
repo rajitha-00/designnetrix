@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../SectionTitle";
+import Link from "next/link";
 
 const capabilitiesData: ChainItem[] = [
   {
@@ -101,29 +102,31 @@ export default function CapabilitiesSection() {
 
           {/* CTA Button */}
           <div className="flex justify-center">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="group glass hover:bg-white/10 transition-colors duration-300"
-              icon={
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              }
-              iconPosition="right"
-            >
-              View solutions
-            </Button>
+            <Link href="/services">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="group glass hover:bg-white/10 transition-colors duration-300"
+                icon={
+                  <svg
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                }
+                iconPosition="right"
+              >
+                View solutions
+              </Button>
+            </Link>
           </div>
         </motion.div>
 

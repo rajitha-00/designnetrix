@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 import { Button } from "../Button";
 import { SectionTitle } from "../SectionTitle";
+import Link from "next/link";
 
 export const Services = () => {
   const [selectedService, setSelectedService] = useState<
@@ -162,14 +163,16 @@ export const Services = () => {
                   <div className="text-sm text-gray-500">
                     Ready to scale your business?
                   </div>
-                  <Button
-                    onClick={() => setSelectedService(null)}
-                    variant="primary"
-                    size="lg"
-                    className="w-full sm:w-auto rounded-xl shadow-[0_0_20px_rgba(30,150,201,0.3)]"
-                  >
-                    Start Project
-                  </Button>
+                  <Link href="/contact">
+                    <Button
+                      onClick={() => setSelectedService(null)}
+                      variant="primary"
+                      size="lg"
+                      className="w-full sm:w-auto rounded-xl shadow-[0_0_20px_rgba(30,150,201,0.3)]"
+                    >
+                      Start Project
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

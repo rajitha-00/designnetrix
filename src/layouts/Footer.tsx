@@ -250,12 +250,12 @@ export default function Footer() {
               {/* Contact Info */}
               <div className="space-y-2">
                 <a
-                  href="mailto:designnetrix@outlook.com"
+                  href="mailto:hellodesignnetrix@outlook.com"
                   className="flex items-center gap-2 text-gray-400 hover:text-[#1E96C9] 
                   transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4" />
-                  designnetrix@outlook.com
+                  hellodesignnetrix@outlook.com
                 </a>
                 <a
                   href="tel:+1234567890"

@@ -5,13 +5,13 @@ import React, {
   useLayoutEffect,
   forwardRef,
 } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LucideIcon } from "lucide-react";
 
 // Assuming these are external, import them
 import { cn } from "../lib/utils";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +40,7 @@ const useFeatureAnimations = (
   cardRefs: React.MutableRefObject<HTMLDivElement[]>,
   cardRefs2: React.MutableRefObject<HTMLDivElement[]>,
   isDesktop: boolean,
-  maxScrollHeight?: number
+  maxScrollHeight?: number,
 ) => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -174,12 +174,12 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
       cardRefs,
       cardRefs2,
       isDesktop,
-      maxScrollHeight
+      maxScrollHeight,
     );
 
     const renderFeatureCards = (
       featureSet: FeatureItem[],
-      refs: React.MutableRefObject<HTMLDivElement[]>
+      refs: React.MutableRefObject<HTMLDivElement[]>,
     ) =>
       featureSet.map((feature, index) => (
         <div
@@ -195,10 +195,10 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
               flex items-center justify-center z-10 
               transition-all duration-300 my-6`,
               `backdrop-blur-lg border border-white/20 text-black dark:text-white shadow-2xl`,
-              "group-hover:scale-[1.02] group-hover:shadow-cyan-500/20 centered:scale-[1.02]"
+              "group-hover:scale-[1.02] group-hover:shadow-cyan-500/20 centered:scale-[1.02]",
             )}
           >
-            <img
+            <Image
               src={
                 feature.image ||
                 "https://images.pexels.com/photos/9934462/pexels-photo-9934462.jpeg"
@@ -211,7 +211,7 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
             <div className="absolute bottom-6 z-10 w-full px-6">
               <div
                 className={cn(
-                  `flex flex-col justify-end h-full opacity-100 transition-all duration-300 ease-out text-center`
+                  `flex flex-col justify-end h-full opacity-100 transition-all duration-300 ease-out text-center`,
                 )}
               >
                 <h3 className="text-2xl lg:text-3xl mb-3 font-bold text-white transition-all duration-300 drop-shadow-lg">
@@ -236,7 +236,7 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
       <section
         className={cn(
           "bg-transparent text-foreground relative overflow-hidden",
-          className
+          className,
         )}
         ref={ref}
       >
@@ -273,7 +273,9 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
             </div>
           )}
         </div>
-        <style dangerouslySetInnerHTML={{__html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           .animated-water {
             background: repeating-linear-gradient(
               -45deg,
@@ -300,10 +302,12 @@ export const ScrollCarousel = forwardRef<HTMLDivElement, ScrollCarouselProps>(
               background-position: 40px 40px;
             }
           }
-        `}} />
+        `,
+          }}
+        />
       </section>
     );
-  }
+  },
 );
 
 ScrollCarousel.displayName = "ScrollCarousel";

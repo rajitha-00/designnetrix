@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { cn } from "../../lib/utils";
 
 export interface DynamicNavigationProps {
@@ -45,7 +45,7 @@ export const DynamicNavigation = ({
   const navRef = useRef<HTMLElement>(null);
   const highlightRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<string | null>(
-    activeLink || (links.length > 0 ? links[0].id : null)
+    activeLink || (links.length > 0 ? links[0].id : null),
   );
 
   // Directly define the default black and white theme styles
@@ -58,22 +58,25 @@ export const DynamicNavigation = ({
   };
 
   // Update highlight position based on active link
-  const updateHighlightPosition = (id?: string) => {
-    if (!navRef.current || !highlightRef.current) return;
+  const updateHighlightPosition = useCallback(
+    (id?: string) => {
+      if (!navRef.current || !highlightRef.current) return;
 
-    const linkElement = navRef.current.querySelector(
-      `#nav-item-${id || active}`
-    );
-    if (!linkElement) return;
+      const linkElement = navRef.current.querySelector(
+        `#nav-item-${id || active}`,
+      );
+      if (!linkElement) return;
 
-    const { left, width } = linkElement.getBoundingClientRect();
-    const navRect = navRef.current.getBoundingClientRect();
+      const { left, width } = linkElement.getBoundingClientRect();
+      const navRect = navRef.current.getBoundingClientRect();
 
-    highlightRef.current.style.transform = `translateX(${
-      left - navRect.left
-    }px)`;
-    highlightRef.current.style.width = `${width}px`;
-  };
+      highlightRef.current.style.transform = `translateX(${
+        left - navRect.left
+      }px)`;
+      highlightRef.current.style.width = `${width}px`;
+    },
+    [active],
+  );
 
   // Create ripple effect
   const createRipple = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -96,7 +99,7 @@ export const DynamicNavigation = ({
       "rounded-full",
       "pointer-events-none",
       "opacity-30",
-      "animate-ripple"
+      "animate-ripple",
     );
 
     const ripple = button.getElementsByClassName("ripple")[0];
@@ -111,7 +114,7 @@ export const DynamicNavigation = ({
   // Handle link click
   const handleLinkClick = (
     id: string,
-    event: React.MouseEvent<HTMLAnchorElement>
+    event: React.MouseEvent<HTMLAnchorElement>,
   ) => {
     if (enableRipple) {
       createRipple(event);
@@ -158,7 +161,7 @@ export const DynamicNavigation = ({
         defaultThemeStyles.bg,
         defaultThemeStyles.border,
         defaultThemeStyles.glow,
-        className
+        className,
       )}
       style={{
         backgroundColor: backgroundColor,
@@ -171,7 +174,7 @@ export const DynamicNavigation = ({
         className={cn(
           `absolute top-0 left-0 h-full rounded-full transition-all 
           duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] z-0`,
-          defaultThemeStyles.highlight
+          defaultThemeStyles.highlight,
         )}
         style={{
           backgroundColor: highlightColor,
@@ -192,7 +195,7 @@ export const DynamicNavigation = ({
                 rounded-full font-medium transition-all duration-300 hover:scale-105 
                 relative overflow-hidden`,
                 defaultThemeStyles.text,
-                active === link.id && "font-semibold"
+                active === link.id && "font-semibold",
               )}
               onClick={(e) => {
                 e.preventDefault();
@@ -201,9 +204,7 @@ export const DynamicNavigation = ({
               onMouseEnter={() => handleLinkHover(link.id)}
             >
               {link.icon && (
-                <span className="text-current text-xs ">
-                  {link.icon}
-                </span>
+                <span className="text-current text-xs ">{link.icon}</span>
               )}
               <span
                 className={cn(showLabelsOnMobile ? "flex" : "hidden sm:flex")}

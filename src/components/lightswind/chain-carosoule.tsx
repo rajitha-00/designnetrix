@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 import Image from "next/image";

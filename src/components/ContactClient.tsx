@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/Button";
 import { HeroTitel } from "@/components/HeroTitel";
+import { sendEmail } from "@/actions/sendEmail";
 
-// Custom Icons for X and TikTok
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -41,15 +41,32 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    // Create FormData object
+    const formData = new FormData();
+    formData.append("name", formState.name);
+    formData.append("email", formState.email);
+    formData.append("subject", formState.subject);
+    formData.append("message", formState.message);
+
+    try {
+      const result = await sendEmail(formData);
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormState({ name: "", email: "", subject: "", message: "" });
+      } else {
+        alert("Failed to send message: " + result.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", subject: "", message: "" });
-    }, 2000);
+    }
   };
 
   const contactInfos = [

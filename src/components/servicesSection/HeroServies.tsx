@@ -4,6 +4,7 @@ import Globe from "../lightswind/globe";
 import { Eye, Zap } from "lucide-react";
 import { Button } from "../Button";
 import { HeroTitel } from "../HeroTitel";
+import Link from "next/link";
 
 export const HeroServies = () => {
   return (
@@ -110,20 +111,23 @@ export const HeroServies = () => {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
+            <Link href="/contact">
             <Button variant={"primary"} size={"xl"}>
               <span className="relative z-10 font-semibold text-white flex items-center gap-2">
                 Start a Project
                 <Zap className="w-4 h-4" />
               </span>
             </Button>
-
+            </Link>
             {/* Secondary Button */}
+            <Link href="/work">
             <Button variant={"secondary"} size={"xl"}>
               <span className="relative z-10 font-semibold text-white flex items-center gap-2">
                 View Our Work
                 <Eye className="w-4 h-4" />
               </span>
             </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

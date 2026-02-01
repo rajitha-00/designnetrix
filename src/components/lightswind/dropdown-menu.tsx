@@ -531,7 +531,7 @@ const DropdownMenuItem = React.forwardRef<
     }
   };
 
-  const { onClick, ...otherProps } = props;
+  const { ...otherProps } = props;
 
   return (
     <div

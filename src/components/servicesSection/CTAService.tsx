@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ThreeDMarquee } from "../lightswind/3d-marquee";
 import { SectionBadge } from "../SectionBadge";
 import { SectionTitle } from "../SectionTitle";
+import Link from "next/link";
 
 const CLIENT_LOGOS = [
   {
@@ -79,16 +80,11 @@ export const CTAService = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="shadow-[0_0_30px_-5px_#1E96C9]"
-                >
-                  Start Your Project
-                </Button>
-                <Button variant="secondary" size="lg" className="glass">
-                  Schedule Consultation
-                </Button>
+                <Link href="/contact">
+                  <Button variant="secondary" size="lg" className="glass">
+                    Schedule Consultation
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>

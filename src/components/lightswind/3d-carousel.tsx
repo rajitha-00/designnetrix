@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ExternalLink, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence, MotionStyle } from "framer-motion";
 import { useIsMobile } from "../hooks/use-mobile";
 

@@ -83,7 +83,6 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
   ariaLabel = "Navigation menu",
   onOpen,
   onClose,
-  menuDirection = "vertical",
   enableBlur = false,
   zIndex = 1000,
 }) => {

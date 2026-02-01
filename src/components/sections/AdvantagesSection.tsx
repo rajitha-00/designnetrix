@@ -3,6 +3,7 @@
 import { Button } from "@/components/Button";
 import { motion, Variants } from "framer-motion";
 import { SectionTitle } from "../SectionTitle";
+import Link from "next/link";
 
 export default function AdvantagesSection() {
   const containerVariants: Variants = {
@@ -200,29 +201,31 @@ export default function AdvantagesSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center gap-4"
         >
-          <Button
-            variant="secondary"
-            size="lg"
-            className="group glass hover:bg-white/10"
-            icon={
-              <svg
-                className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            }
-            iconPosition="right"
-          >
-            Start Your Project
-          </Button>
+          <Link href="/contact">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="group glass hover:bg-white/10"
+              icon={
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              }
+              iconPosition="right"
+            >
+              Start Your Project
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

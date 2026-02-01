@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { WorkHero } from "@/components/workSection/WorkHero";
 import { WebShowcase } from "@/components/workSection/WebShowcase";
-import { SocialGrid } from "@/components/workSection/SocialGrid";
+// import { SocialGrid } from "@/components/workSection/SocialGrid";
 import { VideoVault } from "@/components/workSection/VideoVault";
 import { CTAService } from "@/components/servicesSection/CTAService";
 import { PROJECTS_SHOWCASE } from "@/constanats/clients";
@@ -118,7 +118,7 @@ export default function WorkPage() {
       <VideoVault />
 
       {/* 4. Social Media Grid: "Social Pulse" */}
-      <SocialGrid />
+      {/* <SocialGrid /> */}
 
       {/* 5. Final CTA */}
       <CTAService />

@@ -70,19 +70,19 @@ const ArrowRightIcon = () => (
 
 export default function ContactModal({ isOpen, onClose, className }: ContactModalProps) {
   const handleWhatsApp = () => {
-    const phoneNumber = "+94704409960";
+    const phoneNumber = "+94701470146";
     const message =
       "Hi! I'm interested in a strategic consultation for my website and branding needs.";
     const whatsappUrl = `https://wa.me/${phoneNumber.replace(
       "+",
-      ""
+      "",
     )}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
     onClose();
   };
 
   const handleEmail = () => {
-    const email = "designnetix@outlook.com";
+    const email = "hellodesignnetix@outlook.com";
     const subject = "Strategic Consultation Request";
     const body =
       "Hi! I'm interested in discussing my website and branding needs. Please let me know your availability for a consultation.";
