@@ -43,7 +43,7 @@ const recentWorks = [
       "Real-time analytics and inventory tracking for retail businesses",
     background: (
       <Image
-        src="/projects/EatFitPos.png"
+        src="/projects/EatfitPos.png"
         alt="Retail Dashboard"
         fill
         className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"
@@ -73,7 +73,7 @@ const recentWorks = [
       "Cloud-based solution with subscription management and team collaboration",
     background: (
       <Image
-        src="/projects/RhCleaning.png"
+        src="/projects/RHCleaning.png"
         alt="SaaS Platform"
         fill
         className="absolute inset-0 h-full w-full object-cover  transition-opacity duration-300 group-hover:opacity-40"

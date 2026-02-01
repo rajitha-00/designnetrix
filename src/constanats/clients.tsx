@@ -26,7 +26,7 @@ export const PROJECTS_SHOWCASE = [
     brand: "Health & Food",
     description: "A comprehensive diet planning and food delivery platform.",
     tags: ["Next.js", "E-commerce", "Vercel"],
-    imageUrl: "/projects/Eatfit.png",
+    imageUrl: "/projects/EatFit.png",
     link: "https://www.eatfit.lk/",
   },
   {
@@ -55,7 +55,7 @@ export const PROJECTS_SHOWCASE = [
     description:
       "Next-gen POS interface formatted for security and user experience.",
     tags: ["React", "Vercel", "Tailwind"],
-    imageUrl: "/projects/EatFitPos.png",
+    imageUrl: "/projects/EatfitPos.png",
     link: "#",
   },
 ];
